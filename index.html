@@ -20,7 +20,7 @@
     --rose: #d4a5a0;
     --leather: #6c462d;
     --gold: #e7c770;
-    --shell-header-gap: clamp(88px, 12vmin, 118px);
+    --shell-header-gap: clamp(104px, 14vmin, 142px);
     --book-fold-reserve: clamp(208px, 27vmin, 296px);
   }
   html { scroll-behavior: smooth; }
@@ -152,7 +152,7 @@
     width: min(1220px, calc(100% - 24px));
     min-height: max(520px, calc(100dvh - var(--shell-header-gap)));
     margin: 0 auto;
-    padding: clamp(10px, 1.6vh, 18px) 0 clamp(14px, 2.2vh, 28px);
+    padding: clamp(22px, 3.2vh, 42px) 0 clamp(14px, 2.2vh, 28px);
     display: flex;
     flex-direction: column;
     justify-content: safe center;
@@ -163,7 +163,7 @@
   #introduction,
   #my-path,
   #things-i-like {
-    scroll-margin-top: 72px;
+    scroll-margin-top: clamp(10px, 2vmin, 20px);
   }
   .site-header {
     display: grid;
@@ -172,9 +172,8 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: max(8px, env(safe-area-inset-top, 0px)) clamp(14px, 4vw, 32px) clamp(18px, 3vh, 32px);
-    position: sticky;
-    top: 0;
+    padding: calc(env(safe-area-inset-top, 0px) + clamp(22px, 3.8vmin, 48px)) clamp(14px, 4vw, 32px) clamp(18px, 3vh, 32px);
+    position: relative;
     z-index: 60;
     border: none;
     border-radius: 0;
@@ -1703,7 +1702,7 @@
   }
   @media (max-width: 560px) {
     :root {
-      --shell-header-gap: clamp(108px, 28vmin, 148px);
+      --shell-header-gap: clamp(124px, 30vmin, 168px);
       --book-fold-reserve: clamp(248px, 38vmin, 340px);
     }
     .site-header {
@@ -1711,7 +1710,7 @@
       flex-direction: column;
       align-items: stretch;
       gap: 10px 12px;
-      padding: max(6px, env(safe-area-inset-top, 0px)) clamp(12px, 4vw, 20px) clamp(14px, 3vh, 22px);
+      padding: calc(env(safe-area-inset-top, 0px) + clamp(18px, 4vmin, 36px)) clamp(12px, 4vw, 20px) clamp(14px, 3vh, 22px);
     }
     .site-logo {
       align-self: flex-start;
