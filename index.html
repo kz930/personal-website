@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kary Zheng personal portfolio in a forest techo journal aesthetic.">
+<title>Kary Zheng · Forest Techo Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Klee+One&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #f7f1e5;
+    --paper-2: #fffaf0;
+    --ink: #3d2e25;
+    --soft-ink: #655344;
+    --sage: #8b9e7a;
+    --forest: #2f4b36;
+    --moss: #57724d;
+    --terra: #c4714a;
+    --rose: #d4a5a0;
+    --leather: #6c462d;
+    --gold: #e7c770;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--ink);
+    font-family: "Lora", serif;
+    background: #dce8cf;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cellipse cx='12' cy='7' rx='9' ry='6' fill='%23c4714a' opacity='0.9'/%3E%3Crect x='9' y='12' width='6' height='9' rx='2' fill='%23f5e6c8'/%3E%3C/svg%3E") 12 12, auto;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
+
+  .forest {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 15%, rgba(255, 235, 180, 0.42), transparent 16rem),
+      linear-gradient(#d8e6cb 0%, #a8bd95 39%, #6f8a67 72%, #33523d 100%);
+  }
+  .forest::before,
+  .forest::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background-repeat: repeat-x;
+    background-position: bottom center;
+  }
+  .forest::before {
+    opacity: 0.26;
+    filter: blur(1px);
+    background-size: 360px 62%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360' viewBox='0 0 360 360'%3E%3Cg fill='%232f4b36'%3E%3Cpath d='M45 350h28V116l-14-52-14 52z'/%3E%3Cpath d='M130 350h34V86l-17-65-17 65z'/%3E%3Cpath d='M238 350h30V104l-15-59-15 59z'/%3E%3Cpath d='M300 350h26V142l-13-48-13 48z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .forest::after {
+    opacity: 0.42;
+    background-size: 430px 76%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='430' height='420' viewBox='0 0 430 420'%3E%3Cg fill='%231c3326'%3E%3Cpath d='M34 420h38V126L53 36 34 126z'/%3E%3Cpath d='M89 420h22V178L100 98 89 178z'/%3E%3Cpath d='M178 420h44V108L200 0l-22 108z'/%3E%3Cpath d='M293 420h36V145l-18-92-18 92z'/%3E%3Cpath d='M370 420h27V184l-13-72-14 72z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .ground {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -3;
+    height: 26vh;
+    background:
+      radial-gradient(ellipse at 22% 95%, rgba(28, 54, 34, 0.48), transparent 18rem),
+      linear-gradient(180deg, rgba(86, 126, 79, 0), #33523d 45%, #203727);
+  }
+  .grass {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: -2;
+    height: 16vh;
+    opacity: 0.52;
+    background-size: 120px 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg stroke='%233f6a45' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M8 120C13 90 21 70 31 52'/%3E%3Cpath d='M24 120c2-27 8-48 19-70'/%3E%3Cpath d='M47 120c1-32 8-58 21-82'/%3E%3Cpath d='M73 120c-2-30 2-52 14-74'/%3E%3Cpath d='M93 120c2-25 8-43 19-60'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .mist {
+    position: fixed;
+    right: -20%;
+    bottom: 13vh;
+    left: -20%;
+    z-index: -1;
+    height: 23vh;
+    opacity: 0.42;
+    background:
+      radial-gradient(ellipse at 18% 62%, rgba(255,255,255,0.8), transparent 22rem),
+      radial-gradient(ellipse at 60% 45%, rgba(255,255,255,0.7), transparent 25rem),
+      radial-gradient(ellipse at 90% 70%, rgba(255,255,255,0.55), transparent 18rem);
+    animation: mist-drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes mist-drift {
+    from { transform: translateX(-3%); }
+    to { transform: translateX(3%); }
+  }
+  .root-shrooms {
+    position: fixed;
+    bottom: 6vh;
+    left: clamp(12px, 5vw, 76px);
+    z-index: 4;
+    opacity: 0.92;
+    cursor: pointer;
+    transition: transform .25s ease, filter .25s ease;
+  }
+  .root-shrooms svg { width: min(210px, 38vw); }
+  .root-shrooms:hover, .root-shrooms:focus-visible {
+    transform: translateY(-4px) rotate(-2deg);
+    filter: drop-shadow(0 0 12px rgba(255, 247, 168, .42));
+    outline: none;
+  }
+  .firefly-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .firefly {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #fff7a8;
+    box-shadow: 0 0 12px 4px rgba(255, 246, 145, 0.65);
+    animation: firefly var(--dur) ease-in-out infinite alternate;
+  }
+  @keyframes firefly {
+    from { transform: translate(0, 0) scale(0.75); opacity: 0.25; }
+    45% { opacity: 1; }
+    to { transform: translate(var(--dx), var(--dy)) scale(1.2); opacity: 0.65; }
+  }
+
+  .shell {
+    position: relative;
+    z-index: 2;
+    width: min(1180px, calc(100% - 28px));
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 26px 0 36px;
+    display: grid;
+    align-content: center;
+  }
+  .top-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .top-tabs button {
+    min-height: 36px;
+    padding: 5px 14px;
+    border: 1.5px dashed rgba(74, 63, 53, 0.38);
+    border-radius: 999px;
+    color: #3b2d25;
+    background: rgba(255, 250, 240, 0.82);
+    font-family: "Caveat", "Klee One", cursive;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 5px 16px rgba(17, 25, 18, 0.12);
+  }
+  .top-tabs button.active {
+    color: #fffaf0;
+    background: var(--forest);
+    border-color: rgba(255, 250, 240, 0.5);
+  }
+  .book-wrap {
+    position: relative;
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    width: min(980px, 100%);
+    margin: 0 auto;
+    perspective: 1800px;
+    filter: drop-shadow(0 26px 46px rgba(5, 13, 8, 0.35));
+  }
+  .spine {
+    position: relative;
+    min-height: 660px;
+    border-radius: 26px 8px 8px 26px;
+    background:
+      linear-gradient(90deg, rgba(255,255,255,0.14), transparent 22%, rgba(0,0,0,0.18) 78%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 3px, transparent 3px 11px),
+      linear-gradient(180deg, #8a5a37, #5b351f 48%, #7d4b2b);
+    border: 2px solid rgba(45, 24, 13, 0.35);
+  }
+  .spine::before {
+    position: absolute;
+    inset: 18px 22px;
+    content: "";
+    border-left: 1px solid rgba(255, 234, 190, 0.32);
+    border-right: 1px solid rgba(26, 12, 5, 0.2);
+    border-radius: 20px;
+  }
+  .spine-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: rgba(255, 235, 190, 0.78);
+    font-family: "Caveat", cursive;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+  .book {
+    position: relative;
+    min-height: 660px;
+    transform-style: preserve-3d;
+    border-radius: 8px 28px 28px 8px;
+    background: #cdbd9f;
+  }
+  .page {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    align-content: start;
+    gap: 16px;
+    padding: clamp(22px, 4vw, 42px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    transform-origin: left center;
+    backface-visibility: hidden;
+    border: 1.5px solid rgba(113, 87, 58, 0.28);
+    border-left: 5px solid rgba(113, 87, 58, 0.22);
+    border-radius: 8px 28px 28px 8px;
+    background:
+      linear-gradient(90deg, rgba(80,55,34,0.08), transparent 6%),
+      repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(180,160,120,0.13) 29px),
+      var(--paper);
+    box-shadow: inset 14px 0 26px rgba(84, 58, 36, 0.12);
+    opacity: 0;
+    pointer-events: none;
+    transform: rotateY(18deg);
+    transition: transform 720ms cubic-bezier(.2,.7,.2,1), opacity 360ms ease;
+  }
+  .page.active {
+    z-index: 5;
+    opacity: 1;
+    pointer-events: auto;
+    transform: rotateY(0deg);
+  }
+  .page.turning-out {
+    opacity: 0;
+    transform: rotateY(-112deg);
+  }
+  .page::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 54px;
+    height: 54px;
+    content: "";
+    background: linear-gradient(135deg, transparent 50%, rgba(111, 86, 58, 0.12) 51%, rgba(255,250,240,0.76) 78%);
+    border-bottom-right-radius: 26px;
+  }
+  .side-tab {
+    position: absolute;
+    top: var(--tab-top);
+    right: -2px;
+    width: 46px;
+    height: 118px;
+    display: grid;
+    place-items: center;
+    color: #fffaf0;
+    border-radius: 12px 0 0 12px;
+    font-family: "Caveat", "Klee One", cursive;
+    font-size: 1rem;
+    font-weight: 700;
+    writing-mode: vertical-rl;
+    box-shadow: -4px 6px 12px rgba(74, 45, 28, 0.15);
+  }
+  .cover .side-tab { background: #8b9e7a; --tab-top: 42px; }
+  .about .side-tab { background: #c4714a; --tab-top: 92px; }
+  .work .side-tab { background: #d4a5a0; --tab-top: 142px; }
+  .loves .side-tab { background: #6f8a67; --tab-top: 192px; }
+  .guest .side-tab { background: #9a7b6a; --tab-top: 242px; }
+  .washi {
+    width: min(320px, 68%);
+    height: 24px;
+    background: var(--washi);
+    border: 1px dashed rgba(74, 63, 53, 0.14);
+    transform: rotate(var(--tilt));
+    opacity: 0.88;
+  }
+  .cover { --washi: repeating-linear-gradient(90deg, rgba(139,158,122,.45) 0 12px, rgba(245,240,232,.55) 12px 24px); --tilt: -1deg; }
+  .about { --washi: repeating-linear-gradient(90deg, rgba(196,113,74,.35) 0 12px, rgba(212,165,160,.35) 12px 24px); --tilt: .8deg; }
+  .work { --washi: repeating-linear-gradient(90deg, rgba(212,165,160,.45) 0 10px, rgba(245,240,232,.55) 10px 22px); --tilt: -1.2deg; }
+  .loves { --washi: repeating-linear-gradient(90deg, rgba(139,158,122,.45) 0 8px, rgba(231,199,112,.28) 8px 18px); --tilt: 1.4deg; }
+  .guest { --washi: repeating-linear-gradient(90deg, rgba(154,123,106,.38) 0 12px, rgba(255,250,240,.5) 12px 24px); --tilt: -.7deg; }
+  .date {
+    color: #806a58;
+    font-family: "Caveat", cursive;
+    font-size: 1.25rem;
+  }
+  h1, h2, h3 {
+    color: var(--ink);
+    line-height: 1.02;
+  }
+  h1 {
+    max-width: 700px;
+    font-family: "Caveat", cursive;
+    font-size: clamp(4.4rem, 11vw, 8rem);
+  }
+  h2 {
+    font-family: "Caveat", "Klee One", cursive;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+  }
+  h3 {
+    font-family: "Caveat", "Klee One", cursive;
+    font-size: 1.55rem;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    max-width: 680px;
+    color: var(--soft-ink);
+    font-size: 1.02rem;
+    font-style: italic;
+  }
+  .hero-actions, .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .paper-button, .contact-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 7px 14px;
+    border: 1.5px dashed rgba(74, 63, 53, 0.36);
+    border-radius: 4px;
+    color: var(--ink);
+    background: #fffaf0;
+    font-family: "Caveat", cursive;
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: 2px 2px 0 rgba(84, 58, 36, 0.08);
+  }
+  .stamp {
+    display: inline-flex;
+    width: fit-content;
+    padding: 3px 10px;
+    color: var(--terra);
+    border: 2px solid var(--terra);
+    border-radius: 3px;
+    font-family: "Caveat", cursive;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transform: rotate(3deg);
+    opacity: 0.8;
+  }
+  .note-card {
+    position: relative;
+    padding: 18px 20px;
+    color: var(--soft-ink);
+    background: #fffaf0;
+    border: 1px solid rgba(113, 87, 58, 0.22);
+    box-shadow: 4px 5px 0 rgba(129, 91, 55, 0.09);
+    clip-path: polygon(0 2%, 8% 0, 19% 2%, 30% 0, 41% 2%, 52% 0, 63% 2%, 74% 0, 86% 2%, 100% 0, 99% 100%, 86% 98%, 74% 100%, 62% 98%, 50% 100%, 38% 98%, 26% 100%, 14% 98%, 0 100%);
+  }
+  .note-card p + p { margin-top: 10px; }
+  .timeline, .fun-list {
+    display: grid;
+    gap: 10px;
+  }
+  .timeline-item, .fun-item {
+    padding: 12px 14px;
+    color: var(--soft-ink);
+    background: rgba(255, 250, 240, 0.72);
+    border-left: 4px solid var(--sage);
+  }
+  .timeline-item strong, .fun-item strong {
+    display: block;
+    color: var(--ink);
+    font-family: "Caveat", "Klee One", cursive;
+    font-size: 1.35rem;
+    line-height: 1.05;
+  }
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .polaroid {
+    position: relative;
+    min-height: 214px;
+    padding: 9px 9px 22px;
+    background: #fff;
+    box-shadow: 3px 4px 12px rgba(82, 54, 34, 0.18);
+    transform: rotate(var(--r));
+    transition: transform .25s, box-shadow .25s;
+    cursor: pointer;
+  }
+  .polaroid:hover,
+  .polaroid:focus-visible {
+    z-index: 6;
+    transform: rotate(0deg) translateY(-4px) scale(1.03);
+    box-shadow: 5px 8px 18px rgba(82, 54, 34, 0.25);
+    outline: 2px dashed rgba(47, 75, 54, .55);
+    outline-offset: 4px;
+  }
+  .polaroid::before {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    content: "";
+    border-radius: 50%;
+    background: radial-gradient(circle at 34% 32%, #ffd8c9, var(--pin));
+    transform: translateX(-50%);
+    box-shadow: 0 2px 5px rgba(0,0,0,.22);
+  }
+  .photo {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1.18 / 1;
+    margin-bottom: 9px;
+    background: #eee5d5;
+  }
+  .photo svg { width: 78px; height: 78px; }
+  .caption {
+    text-align: center;
+    font-family: "Caveat", "Klee One", cursive;
+    font-size: 1.08rem;
+    line-height: 1.15;
+  }
+  .caption small {
+    display: block;
+    margin-top: 4px;
+    color: #8d7464;
+    font-family: "Lora", serif;
+    font-size: .66rem;
+    line-height: 1.35;
+  }
+  .sticker-sheet {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .sticker {
+    padding: 7px 13px;
+    border: 1.5px dashed currentColor;
+    border-radius: 999px;
+    font-family: "Caveat", "Klee One", cursive;
+    font-size: 1.18rem;
+    font-weight: 700;
+    transform: rotate(var(--r));
+  }
+  .s1 { color: #8a4a28; background: #f0ebe0; }
+  .s2 { color: #4a6a38; background: #e8edd8; }
+  .s3 { color: #9a4a38; background: #fceee8; }
+  .s4 { color: #7a4a68; background: #f5e8f0; }
+  .guestbook input {
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    padding: 8px 0;
+    color: var(--ink);
+    background: transparent;
+    border: 0;
+    border-bottom: 1.5px solid #c4a87a;
+    outline: none;
+    font-family: "Caveat", "Klee One", cursive;
+    font-size: 1.35rem;
+  }
+  .guestbook button {
+    padding: 7px 18px;
+    color: #fffaf0;
+    background: var(--terra);
+    border: 0;
+    border-radius: 4px;
+    font-family: "Caveat", cursive;
+    font-size: 1.15rem;
+    cursor: pointer;
+  }
+  .messages {
+    display: grid;
+    gap: 8px;
+    max-height: 120px;
+    margin-top: 12px;
+    overflow: auto;
+  }
+  .msg {
+    padding: 6px 9px;
+    color: var(--soft-ink);
+    background: rgba(255, 250, 240, 0.72);
+    border-left: 3px solid var(--sage);
+    font-family: "Caveat", "Klee One", cursive;
+    font-size: 1.08rem;
+  }
+  .page-controls {
+    position: absolute;
+    right: 24px;
+    bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+  }
+  .page-scroll-cue {
+    position: sticky;
+    bottom: 56px;
+    justify-self: end;
+    z-index: 9;
+    width: fit-content;
+    padding: 7px 13px;
+    color: #fffaf0;
+    background: rgba(47, 75, 54, .9);
+    border: 1px dashed rgba(255,250,240,.65);
+    border-radius: 999px;
+    font-family: "Caveat", cursive;
+    font-size: 1.05rem;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(44, 68, 48, .22);
+  }
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: none;
+    place-items: center;
+    padding: 18px;
+    background: rgba(20, 34, 25, .42);
+    backdrop-filter: blur(6px);
+  }
+  .modal.open { display: grid; }
+  .modal-card {
+    position: relative;
+    width: min(650px, 100%);
+    max-height: min(78vh, 720px);
+    overflow: auto;
+    padding: clamp(22px, 4vw, 34px);
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(180,160,120,0.13) 29px),
+      #fffaf0;
+    border: 1.5px solid rgba(113, 87, 58, 0.32);
+    border-radius: 10px;
+    box-shadow: 0 24px 60px rgba(10, 20, 12, .35);
+    clip-path: polygon(0 2%, 8% 0, 19% 2%, 30% 0, 41% 2%, 52% 0, 63% 2%, 74% 0, 86% 2%, 100% 0, 99% 100%, 86% 98%, 74% 100%, 62% 98%, 50% 100%, 38% 98%, 26% 100%, 14% 98%, 0 100%);
+  }
+  .modal-card h3 {
+    padding-right: 44px;
+    font-size: clamp(2.1rem, 6vw, 3.2rem);
+  }
+  .modal-card p {
+    margin: 8px 0 12px;
+    color: var(--soft-ink);
+    font-style: italic;
+  }
+  .modal-card ul {
+    display: grid;
+    gap: 8px;
+    margin: 0 0 14px 1.1rem;
+    color: var(--soft-ink);
+  }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 34px;
+    color: var(--ink);
+    background: #fffaf0;
+    border: 1.5px dashed rgba(74, 63, 53, .42);
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .page-controls button {
+    width: 38px;
+    height: 34px;
+    border: 1px dashed rgba(74,63,53,.38);
+    border-radius: 8px;
+    background: rgba(255, 250, 240, .86);
+    cursor: pointer;
+  }
+  .hint {
+    color: #7b6859;
+    font-family: "Caveat", cursive;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 850px) {
+    .shell { align-content: start; padding-top: 14px; }
+    .book-wrap { grid-template-columns: 42px minmax(0, 1fr); }
+    .spine, .book { min-height: 760px; }
+    .spine-title { font-size: 1.1rem; }
+    .page { padding: 22px 18px 70px; }
+    .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .side-tab { width: 34px; height: 96px; font-size: .82rem; }
+  }
+  @media (max-width: 560px) {
+    .top-tabs { gap: 5px; }
+    .top-tabs button { padding: 4px 9px; font-size: 1rem; }
+    .book-wrap { width: 100%; grid-template-columns: 28px minmax(0, 1fr); }
+    .spine, .book { min-height: 820px; }
+    h1 { font-size: 4.3rem; }
+    h2 { font-size: 2.55rem; }
+    .project-grid { grid-template-columns: 1fr; }
+    .polaroid { min-height: 174px; }
+    .photo { aspect-ratio: 2 / 1; }
+    .side-tab { display: none; }
+    .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="forest"></div>
+  <div class="ground"></div>
+  <div class="grass"></div>
+  <div class="mist"></div>
+  <div class="firefly-layer" id="fireflies" aria-hidden="true"></div>
+  <div class="root-shrooms" id="rootShrooms" role="button" tabindex="0" aria-label="Release more fireflies from the mushrooms">
+    <svg viewBox="0 0 260 130">
+      <path d="M0 125c45-18 75-25 124-10 46 14 86-8 136-22v37H0Z" fill="#102016"/>
+      <g transform="translate(26 55)"><ellipse cx="28" cy="24" rx="28" ry="19" fill="#c4714a"/><circle cx="19" cy="18" r="4" fill="#fff1cc"/><circle cx="36" cy="15" r="3" fill="#fff1cc"/><rect x="21" y="39" width="14" height="34" rx="5" fill="#f5d9b8"/></g>
+      <g transform="translate(92 70) scale(.72)"><ellipse cx="28" cy="24" rx="28" ry="19" fill="#8b9e7a"/><circle cx="19" cy="18" r="4" fill="#d7e0c4"/><rect x="21" y="39" width="14" height="34" rx="5" fill="#f5d9b8"/></g>
+      <g transform="translate(145 62) scale(.9)"><ellipse cx="28" cy="24" rx="28" ry="19" fill="#d4a5a0"/><circle cx="36" cy="15" r="3" fill="#fff1cc"/><rect x="21" y="39" width="14" height="34" rx="5" fill="#f5d9b8"/></g>
+    </svg>
+  </div>
+
+  <main class="shell">
+    <nav class="top-tabs" aria-label="Notebook pages">
+      <button class="active" data-page="0">cover</button>
+      <button data-page="1">about</button>
+      <button data-page="2">work</button>
+      <button data-page="3">loves</button>
+      <button data-page="4">Leave a Note!</button>
+    </nav>
+
+    <div class="book-wrap">
+      <aside class="spine" aria-hidden="true"><div class="spine-title">Kary's forest journal</div></aside>
+      <section class="book" aria-live="polite">
+        <article class="page cover active" data-title="cover">
+          <div class="side-tab">cover</div>
+          <div class="washi"></div>
+          <p class="date">✦ 2026.05 · Irvine forest notes</p>
+          <h1>hi, i'm Kary</h1>
+          <p class="subtitle">CS + Psychology student · software engineer · product manager · designer of human-centered interaction</p>
+          <div class="hero-actions">
+            <a class="paper-button" href="assets/kary-zheng-resume.docx" download>download resume</a>
+            <a class="paper-button" href="mailto:zhengj29@uci.edu">email me</a>
+            <a class="paper-button" href="https://github.com/kz930" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="paper-button" href="https://www.linkedin.com/in/kary-zheng-30451b244/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+          <div class="note-card">
+            <span class="stamp">INFJ</span>
+            <p>I like software that feels useful, careful, and human. I am drawn to product decisions, interface details, and systems that make people feel more supported.</p>
+            <p>Current favorite atmosphere: forest morning, tiny mushrooms, warm paper, and citrus perfume.</p>
+          </div>
+        </article>
+
+        <article class="page about" data-title="about">
+          <div class="side-tab">about</div>
+          <div class="washi"></div>
+          <h2>about me</h2>
+          <div class="note-card">
+            <p>I’m pursuing a B.S. in Computer Science and a B.A. in Psychological Science at UC Irvine, with ICS Honors and a 3.95 GPA.</p>
+            <p>I like building systems where engineering meets human behavior: search engines, AI learning tools, emergency workflows, language applications, game interfaces, and mental health community work.</p>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item"><strong>Cognitive Anteater Robotics Laboratory</strong>Research assistant working on Q-learning simulations, reward tuning, punishment modeling, and a Scientific Reports publication on simulated cuttlefish behavior.</div>
+            <div class="timeline-item"><strong>Mucci Assessment</strong>Intern building Google Sheets API automations and reusable web modules for reporting workflows.</div>
+            <div class="timeline-item"><strong>Learning Assistant · UC Irvine</strong>Led Python labs for 30+ students and supported debugging, program design, and core CS concepts.</div>
+            <div class="timeline-item"><strong>WISE PAC</strong>Field study student writing newsletters and helping organize mental health awareness events.</div>
+          </div>
+        </article>
+
+        <article class="page work" data-title="work">
+          <div class="side-tab">work</div>
+          <div class="washi"></div>
+          <h2>things i made</h2>
+          <div class="project-grid">
+            <div class="polaroid" role="button" tabindex="0" data-project="search" style="--r:-2deg;--pin:#c4714a"><div class="photo"><svg viewBox="0 0 92 92"><rect width="92" height="92" fill="#f0e8d8"/><circle cx="46" cy="46" r="27" fill="none" stroke="#8b9e7a" stroke-width="6"/><line x1="65" y1="65" x2="80" y2="80" stroke="#8b9e7a" stroke-width="7" stroke-linecap="round"/><text x="46" y="50" text-anchor="middle" font-family="Caveat" font-size="18" fill="#c4714a">50K+</text></svg></div><div class="caption">Search Engine<small>crawler, inverted index, k-way merge, TF-IDF, proximity ranking</small></div></div>
+            <div class="polaroid" role="button" tabindex="0" data-project="fabflix" style="--r:1.6deg;--pin:#8b9e7a"><div class="photo"><svg viewBox="0 0 92 92"><rect width="92" height="92" fill="#eaf0e0"/><rect x="17" y="22" width="58" height="44" rx="5" fill="#f5f0e8" stroke="#d4b896" stroke-width="2"/><line x1="25" y1="34" x2="67" y2="34" stroke="#c4714a" stroke-width="3"/><line x1="25" y1="46" x2="58" y2="46" stroke="#8b9e7a" stroke-width="3"/><line x1="25" y1="58" x2="65" y2="58" stroke="#d4a5a0" stroke-width="3"/></svg></div><div class="caption">Fabflix<small>full-stack movie platform with auth, checkout, REST APIs, MySQL, Docker, AWS</small></div></div>
+            <div class="polaroid" role="button" tabindex="0" data-project="lifelink" style="--r:-1.2deg;--pin:#d4a5a0"><div class="photo"><svg viewBox="0 0 92 92"><rect width="92" height="92" fill="#fceef8"/><path d="M46 19c15 0 27 12 27 27S61 73 46 73 19 61 19 46 31 19 46 19Z" fill="#fff8f0" stroke="#c4714a" stroke-width="4"/><path d="M38 43h16M46 35v22" stroke="#c4714a" stroke-width="5" stroke-linecap="round"/></svg></div><div class="caption">LifeLink<small>AI CPR voice agent, sensor feedback, SOS, AED routing · lifelinkfor.us</small></div></div>
+            <div class="polaroid" role="button" tabindex="0" data-project="lingualize" style="--r:2deg;--pin:#c4714a"><div class="photo"><svg viewBox="0 0 92 92"><rect width="92" height="92" fill="#fff0e6"/><path d="M24 30h44v32H24z" fill="#fffaf0" stroke="#d4a5a0" stroke-width="3"/><path d="M31 42h30M31 52h20" stroke="#8b9e7a" stroke-width="4" stroke-linecap="round"/></svg></div><div class="caption">Lingualize<small>language refinement app tracking emotional tone changes with LLMs</small></div></div>
+            <div class="polaroid" role="button" tabindex="0" data-project="edugen" style="--r:-1.8deg;--pin:#8b9e7a"><div class="photo"><svg viewBox="0 0 92 92"><rect width="92" height="92" fill="#e8f4ec"/><path d="M24 24h34c8 0 14 6 14 14v30H32c-8 0-14-6-14-14V30c0-3 3-6 6-6Z" fill="#fffaf0" stroke="#8b9e7a" stroke-width="3"/><path d="M32 38h26M32 49h22M32 60h16" stroke="#c4714a" stroke-width="3"/></svg></div><div class="caption">Edugen<small>AI lesson slides, narrated videos, RAG content, citations, SaaS strategy</small></div></div>
+            <div class="polaroid" role="button" tabindex="0" data-project="rising" style="--r:1.4deg;--pin:#d4a5a0"><div class="photo"><svg viewBox="0 0 92 92"><rect width="92" height="92" fill="#f5e8f0"/><path d="M46 18l7 17 18 2-14 12 4 18-15-9-15 9 4-18-14-12 18-2 7-17Z" fill="#d4a5a0" stroke="#c4714a" stroke-width="3"/></svg></div><div class="caption">Rising Stars!<small>UX/UI design for a playable game demo interface</small></div></div>
+            <div class="polaroid" role="button" tabindex="0" data-project="starlight" style="--r:-.8deg;--pin:#c4714a"><div class="photo"><svg viewBox="0 0 92 92"><rect width="92" height="92" fill="#f0ebe0"/><path d="M22 31h48v36H22z" fill="#fffaf0" stroke="#c4714a" stroke-width="3"/><path d="M28 31c2-10 9-16 18-16s16 6 18 16" fill="none" stroke="#8b9e7a" stroke-width="4"/><circle cx="35" cy="48" r="5" fill="#d4a5a0"/><circle cx="55" cy="48" r="5" fill="#8b9e7a"/></svg></div><div class="caption">Starlight Supermarket<small>game mechanics, economy balance, progression, pricing, inventory</small></div></div>
+            <div class="polaroid" role="button" tabindex="0" data-project="phoenix" style="--r:1.8deg;--pin:#8b9e7a"><div class="photo"><svg viewBox="0 0 92 92"><rect width="92" height="92" fill="#ece8f8"/><path d="M22 64c10-28 38-28 48 0" fill="#d4a5a0"/><path d="M29 56c6-18 28-18 34 0" fill="#c4714a"/><path d="M22 26h48v38H22z" fill="none" stroke="#8b9e7a" stroke-width="3"/></svg></div><div class="caption">PhoenixConnect<small>NASA + Google Maps APIs, Flask, MongoDB, wildfire data, shelters</small></div></div>
+          </div>
+          <button type="button" class="page-scroll-cue" id="scrollProjects">scroll projects ↓</button>
+        </article>
+
+        <article class="page loves" data-title="loves">
+          <div class="side-tab">loves</div>
+          <div class="washi"></div>
+          <h2>loves + field notes</h2>
+          <div class="sticker-sheet">
+            <span class="sticker s1" style="--r:-2deg">INFJ</span>
+            <span class="sticker s2" style="--r:1deg">citrus perfume</span>
+            <span class="sticker s3" style="--r:-1deg">K-pop</span>
+            <span class="sticker s4" style="--r:2deg">matcha</span>
+            <span class="sticker s1" style="--r:1deg">reading novels</span>
+            <span class="sticker s2" style="--r:-2deg">ping pong</span>
+            <span class="sticker s3" style="--r:1deg">badminton</span>
+            <span class="sticker s4" style="--r:-1deg">beach days</span>
+            <span class="sticker s1" style="--r:2deg">hiking</span>
+            <span class="sticker s2" style="--r:-1deg">nature walks</span>
+          </div>
+          <div class="fun-list">
+            <div class="fun-item"><strong>forest mood</strong>I like quiet, slightly magical interfaces: not too loud, but with tiny details that reward attention.</div>
+            <div class="fun-item"><strong>favorite scent direction</strong>Citrus perfume: bright, clean, gentle, a little warm.</div>
+            <div class="fun-item"><strong>human interaction</strong>I am interested in how people feel while using tools, not only whether the tool technically works.</div>
+          </div>
+        </article>
+
+        <article class="page guest" data-title="Leave a Note!">
+          <div class="side-tab">Leave a Note!</div>
+          <div class="washi"></div>
+          <h2>Leave a Note!</h2>
+          <div class="note-card guestbook">
+            <span class="stamp">open to work</span>
+            <p class="subtitle">I’m open to software engineering, product, design-adjacent, full-stack, and research opportunities.</p>
+            <div class="contact-links">
+              <a href="mailto:zhengj29@uci.edu">zhengj29@uci.edu</a>
+              <a href="https://github.com/kz930" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/kary-zheng-30451b244/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="assets/kary-zheng-resume.docx" download>Resume</a>
+            </div>
+            <input id="noteInput" maxlength="70" placeholder="leave a little note here... 🍄">
+            <button type="button" id="noteButton">leave note ✦</button>
+            <div class="messages" id="messages">
+              <div class="msg">✦ welcome to my forest journal — Kary</div>
+            </div>
+          </div>
+        </article>
+
+        <div class="page-controls">
+          <button type="button" id="prevPage" aria-label="Previous page">←</button>
+          <span class="hint">keyboard ← → flips pages</span>
+          <button type="button" id="nextPage" aria-label="Next page">→</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="modal-close" type="button" id="modalClose" aria-label="Close project details">×</button>
+      <span class="stamp" id="modalType">project</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalSummary"></p>
+      <ul id="modalBullets"></ul>
+      <div class="hero-actions" id="modalLinks"></div>
+    </div>
+  </div>
+
+<script>
+const pages = [...document.querySelectorAll('.page')];
+const tabs = [...document.querySelectorAll('.top-tabs button')];
+let current = 0;
+
+function showPage(index) {
+  const next = Math.max(0, Math.min(index, pages.length - 1));
+  if (next === current) return;
+  const previous = current;
+  pages[previous].classList.add('turning-out');
+  pages[previous].classList.remove('active');
+  setTimeout(() => pages[previous]?.classList.remove('turning-out'), 760);
+  current = next;
+  pages[current].scrollTop = 0;
+  pages[current].classList.add('active');
+  tabs.forEach((tab, i) => tab.classList.toggle('active', i === current));
+}
+
+tabs.forEach((tab, index) => tab.addEventListener('click', () => showPage(index)));
+document.getElementById('prevPage').addEventListener('click', () => showPage(current - 1));
+document.getElementById('nextPage').addEventListener('click', () => showPage(current + 1));
+window.addEventListener('keydown', event => {
+  if (document.getElementById('projectModal').classList.contains('open') && event.key === 'Escape') closeProjectModal();
+  if (event.key === 'ArrowLeft') showPage(current - 1);
+  if (event.key === 'ArrowRight') showPage(current + 1);
+});
+
+const projectDetails = {
+  search: {
+    type: 'Information Retrieval',
+    title: 'Scalable Search Engine',
+    summary: 'A search engine that indexes and ranks large web collections with optimized retrieval.',
+    bullets: [
+      'Built a search engine that indexed 50K+ web pages, achieving sub-300ms query latency with optimized retrieval.',
+      'Engineered a crawler with domain filtering, trap avoidance, and politeness controls to improve crawl quality.',
+      'Designed a disk-based inverted index with partial indexing and k-way merging, reducing memory usage at scale.',
+      'Developed TF-IDF ranking with HTML tag weighting and term proximity, improving relevance for ranked results.'
+    ]
+  },
+  fabflix: {
+    type: 'Full-Stack Web Application',
+    title: 'Fabflix',
+    summary: 'A movie platform with customer and admin flows, backend services, search, and deployment work.',
+    bullets: [
+      'Built a full-stack movie platform with search, authentication, checkout, and shopping cart features.',
+      'Developed RESTful APIs using Java Servlets, Tomcat, and MySQL to support modular backend services.',
+      'Implemented secure login, session handling, and role-based employee access for customer and admin workflows.',
+      'Optimized MySQL queries and full-text search, reducing query response time by about 40%.',
+      'Deployed Dockerized microservices on Kubernetes and AWS, enabling load-balanced backend performance.'
+    ]
+  },
+  lifelink: {
+    type: 'Hackathon · AI CPR Platform',
+    title: 'LifeLink',
+    summary: 'An emergency CPR support platform with voice guidance, sensor feedback, and response coordination.',
+    bullets: [
+      'Built an AI CPR voice agent with ElevenLabs, delivering real-time CPR instructions through a React/TypeScript frontend.',
+      'Integrated Arduino sensor feedback via Web Serial, enabling live compression feedback in an end-to-end demo.',
+      'Connected SOS activation, AED routing, volunteer alerts, and patient handoff into a coordinated emergency workflow.'
+    ],
+    links: [{ label: 'Visit LifeLink', href: 'https://www.lifelinkfor.us/' }]
+  },
+  lingualize: {
+    type: 'LLM Application',
+    title: 'Lingualize',
+    summary: 'A language refinement tool focused on how generated language changes emotional tone.',
+    bullets: [
+      'Built an LLM-powered application to refine language while tracking changes in emotional tone.',
+      'Designed a pipeline integrating APIs for emotion analysis and text generation.',
+      'Developed a Streamlit interface for real-time user interaction.',
+      'Evaluated how LLM outputs affect emotional tone using automated analysis.'
+    ]
+  },
+  edugen: {
+    type: 'AI Product · Startup Competition',
+    title: 'Edugen',
+    summary: 'An AI-powered lesson generation platform concept for structured educational content.',
+    bullets: [
+      'Designed an AI-powered system that converts lesson objectives into structured slides and narrated instructional videos.',
+      'Built a retrieval-augmented generation pipeline to fetch and rank curriculum-aligned educational content.',
+      'Developed a content structuring pipeline from hook to concept, examples, assessment, and recap.',
+      'Implemented automated multimedia generation with editable outputs and citation support.',
+      'Conducted market research on K-12 education and homeschooling trends to validate product demand.',
+      'Proposed a SaaS business model with freemium and institutional licensing strategy.'
+    ]
+  },
+  rising: {
+    type: 'UX/UI · Game Interface',
+    title: 'Rising Stars!',
+    summary: 'Interface design work for a playable indie game demo.',
+    bullets: [
+      'Worked as the UX/UI designer for the game interface.',
+      'Focused on clarity, visual tone, and player-facing interaction details for the demo experience.'
+    ],
+    links: [{ label: 'View Demo', href: 'https://vvilder.itch.io/rising-stars-demo' }]
+  },
+  starlight: {
+    type: 'Game Systems Design',
+    title: 'Starlight Supermarket',
+    summary: 'Game design direction across mechanics, progression, economy, and documentation.',
+    bullets: [
+      'Led the overall game design direction, including core gameplay mechanics, economic systems, and player progression.',
+      'Responsible for macro-level planning such as economy balance, content pacing, and unlock systems.',
+      'Designed micro-level systems including product pricing, customer behavior, and inventory mechanics.',
+      'Delivered detailed design documentation and blueprints to guide artists and programmers.'
+    ]
+  },
+  phoenix: {
+    type: 'Disaster Response App',
+    title: 'PhoenixConnect',
+    summary: 'A disaster response app for wildfire visibility, shelters, and user reports.',
+    bullets: [
+      'Built a disaster response app using NASA and Google Maps APIs to map real-time wildfire data and shelters.',
+      'Developed Flask and MongoDB backend services for user reports, improving access to emergency updates.'
+    ]
+  }
+};
+
+const modal = document.getElementById('projectModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalType = document.getElementById('modalType');
+const modalSummary = document.getElementById('modalSummary');
+const modalBullets = document.getElementById('modalBullets');
+const modalLinks = document.getElementById('modalLinks');
+const modalClose = document.getElementById('modalClose');
+
+function openProjectModal(key) {
+  const detail = projectDetails[key];
+  if (!detail) return;
+  modalType.textContent = detail.type;
+  modalTitle.textContent = detail.title;
+  modalSummary.textContent = detail.summary;
+  modalBullets.innerHTML = detail.bullets.map(item => `<li>${item}</li>`).join('');
+  modalLinks.innerHTML = (detail.links || []).map(link => `<a class="paper-button" href="${link.href}" target="_blank" rel="noreferrer">${link.label}</a>`).join('');
+  modal.classList.add('open');
+  modalClose.focus();
+}
+
+function closeProjectModal() {
+  modal.classList.remove('open');
+}
+
+document.querySelectorAll('.polaroid[data-project]').forEach(card => {
+  card.addEventListener('click', () => openProjectModal(card.dataset.project));
+  card.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openProjectModal(card.dataset.project);
+    }
+  });
+});
+modalClose.addEventListener('click', closeProjectModal);
+modal.addEventListener('click', event => {
+  if (event.target === modal) closeProjectModal();
+});
+
+document.getElementById('scrollProjects').addEventListener('click', () => {
+  document.querySelector('.page.work').scrollBy({ top: 360, behavior: 'smooth' });
+});
+
+const noteInput = document.getElementById('noteInput');
+const messages = document.getElementById('messages');
+document.getElementById('noteButton').addEventListener('click', addNote);
+noteInput.addEventListener('keydown', event => {
+  if (event.key === 'Enter') addNote();
+});
+function addNote() {
+  const text = noteInput.value.trim();
+  if (!text) return;
+  const div = document.createElement('div');
+  div.className = 'msg';
+  const marks = ['✦', '🍄', '🌿', '✨', '✎'];
+  div.textContent = `${marks[Math.floor(Math.random() * marks.length)]} ${text}`;
+  messages.prepend(div);
+  noteInput.value = '';
+}
+
+function makeFireflies() {
+  const layer = document.getElementById('fireflies');
+  const count = 18 + Math.floor(Math.random() * 18);
+  for (let i = 0; i < count; i++) {
+    const fly = document.createElement('span');
+    fly.className = 'firefly';
+    fly.style.left = `${Math.random() * 100}%`;
+    fly.style.top = `${12 + Math.random() * 72}%`;
+    fly.style.setProperty('--dx', `${-50 + Math.random() * 100}px`);
+    fly.style.setProperty('--dy', `${-42 + Math.random() * 84}px`);
+    fly.style.setProperty('--dur', `${2.4 + Math.random() * 4.2}s`);
+    fly.style.animationDelay = `${Math.random() * -5}s`;
+    layer.appendChild(fly);
+  }
+}
+makeFireflies();
+
+function releaseFireflyBurst(event) {
+  const layer = document.getElementById('fireflies');
+  const rect = event.currentTarget.getBoundingClientRect();
+  const originX = rect.left + rect.width / 2;
+  const originY = rect.top + rect.height / 2;
+  for (let i = 0; i < 10; i++) {
+    const fly = document.createElement('span');
+    fly.className = 'firefly';
+    fly.style.left = `${originX + (Math.random() - .5) * 70}px`;
+    fly.style.top = `${originY + (Math.random() - .5) * 45}px`;
+    fly.style.setProperty('--dx', `${-90 + Math.random() * 180}px`);
+    fly.style.setProperty('--dy', `${-120 + Math.random() * 70}px`);
+    fly.style.setProperty('--dur', `${1.6 + Math.random() * 1.8}s`);
+    layer.appendChild(fly);
+    setTimeout(() => fly.remove(), 3600);
+  }
+}
+
+const rootShrooms = document.getElementById('rootShrooms');
+rootShrooms.addEventListener('click', releaseFireflyBurst);
+rootShrooms.addEventListener('keydown', event => {
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    releaseFireflyBurst(event);
+  }
+});
+</script>
+</body>
+</html>
