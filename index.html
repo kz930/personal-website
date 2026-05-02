@@ -20,6 +20,8 @@
     --rose: #d4a5a0;
     --leather: #6c462d;
     --gold: #e7c770;
+    --shell-header-gap: clamp(88px, 12vmin, 118px);
+    --book-fold-reserve: clamp(208px, 27vmin, 296px);
   }
   html { scroll-behavior: smooth; }
   body {
@@ -147,12 +149,16 @@
   .shell {
     position: relative;
     z-index: 2;
-    width: min(1180px, calc(100% - 28px));
-    min-height: 100vh;
+    width: min(1220px, calc(100% - 24px));
+    min-height: max(520px, calc(100dvh - var(--shell-header-gap)));
     margin: 0 auto;
-    padding: max(10px, env(safe-area-inset-top, 0px)) 0 36px;
-    display: grid;
-    align-content: start;
+    padding: clamp(10px, 1.6vh, 18px) 0 clamp(14px, 2.2vh, 28px);
+    display: flex;
+    flex-direction: column;
+    justify-content: safe center;
+    align-items: center;
+    gap: clamp(8px, 1.4vh, 16px);
+    box-sizing: border-box;
   }
   #introduction,
   #my-path,
@@ -166,13 +172,13 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: max(8px, env(safe-area-inset-top, 0px)) clamp(14px, 4vw, 32px) 12px;
+    padding: max(8px, env(safe-area-inset-top, 0px)) clamp(14px, 4vw, 32px) clamp(18px, 3vh, 32px);
     position: sticky;
     top: 0;
     z-index: 60;
     border: none;
     border-radius: 0;
-    background: linear-gradient(180deg, rgba(216, 232, 207, .85) 0%, rgba(216, 232, 207, .45) 65%, transparent 100%);
+    background: transparent;
     box-shadow: none;
     backdrop-filter: none;
   }
@@ -245,7 +251,7 @@
   }
   .scroll-down {
     width: fit-content;
-    margin: 18px auto 0;
+    margin: clamp(6px, 1.2vh, 14px) auto 0;
     padding: 8px 16px;
     border: 1.5px dashed rgba(74, 63, 53, 0.38);
     border-radius: 999px;
@@ -259,9 +265,9 @@
   .book-wrap {
     position: relative;
     display: grid;
-    grid-template-columns: 76px minmax(0, 1fr);
+    grid-template-columns: clamp(72px, 7.5vw, 90px) minmax(0, 1fr);
     grid-template-rows: auto 1fr;
-    width: min(980px, 100%);
+    width: min(1100px, calc(100% - 12px));
     margin: 0 auto;
     perspective: 1800px;
     filter: drop-shadow(0 26px 46px rgba(5, 13, 8, 0.35));
@@ -276,7 +282,7 @@
     width: 100%;
     max-width: 100%;
     margin: 0;
-    padding: 10px 8px 14px;
+    padding: clamp(16px, 2.8vh, 32px) 8px clamp(12px, 1.8vh, 16px);
     border: none;
     border-radius: 0;
     background: transparent;
@@ -317,7 +323,7 @@
     grid-row: 2;
     align-self: stretch;
     position: relative;
-    min-height: 660px;
+    min-height: clamp(380px, calc(100dvh - var(--book-fold-reserve)), 720px);
     border-radius: 26px 8px 8px 26px;
     background:
       linear-gradient(90deg, rgba(255,255,255,0.14), transparent 22%, rgba(0,0,0,0.18) 78%),
@@ -349,7 +355,7 @@
     grid-column: 2;
     grid-row: 2;
     position: relative;
-    min-height: 660px;
+    min-height: clamp(380px, calc(100dvh - var(--book-fold-reserve)), 720px);
     transform-style: preserve-3d;
     border-radius: 8px 28px 28px 8px;
     background: #cdbd9f;
@@ -491,6 +497,14 @@
     opacity: 0.88;
   }
   .cover { --washi: repeating-linear-gradient(90deg, rgba(139,158,122,.45) 0 12px, rgba(245,240,232,.55) 12px 24px); --tilt: -1deg; }
+  .page.cover {
+    gap: clamp(8px, 1.5vmin, 14px);
+    padding: clamp(14px, 2.5vmin, 30px);
+  }
+  .page.cover h1 {
+    font-size: clamp(2.2rem, 4.2vmin + 1rem, 4.85rem);
+    line-height: 1.06;
+  }
   .about { --washi: repeating-linear-gradient(90deg, rgba(196,113,74,.35) 0 12px, rgba(212,165,160,.35) 12px 24px); --tilt: .8deg; }
   .work { --washi: repeating-linear-gradient(90deg, rgba(212,165,160,.45) 0 10px, rgba(245,240,232,.55) 10px 22px); --tilt: -1.2deg; }
   .loves { --washi: repeating-linear-gradient(90deg, rgba(139,158,122,.45) 0 8px, rgba(231,199,112,.28) 8px 18px); --tilt: 1.4deg; }
@@ -575,6 +589,30 @@
     clip-path: polygon(0 2%, 8% 0, 19% 2%, 30% 0, 41% 2%, 52% 0, 63% 2%, 74% 0, 86% 2%, 100% 0, 99% 100%, 86% 98%, 74% 100%, 62% 98%, 50% 100%, 38% 98%, 26% 100%, 14% 98%, 0 100%);
   }
   .note-card p + p { margin-top: 10px; }
+  .page.guest {
+    gap: clamp(14px, 2.5vw, 22px);
+  }
+  .page.guest h2 {
+    margin-bottom: clamp(4px, 1vw, 10px);
+  }
+  .page.guest .note-card {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(14px, 2.4vw, 22px);
+    padding: clamp(22px, 3.2vw, 30px) clamp(22px, 3.5vw, 30px);
+  }
+  .page.guest .note-card > p {
+    margin: 0;
+    line-height: 1.62;
+  }
+  .page.guest .contact-links {
+    gap: 12px 14px;
+    margin-top: 2px;
+  }
+  .page.guest .contact-links a {
+    padding: 10px 17px;
+    min-height: 44px;
+  }
   .tag-row, .fact-row, .tech-row {
     display: flex;
     flex-wrap: wrap;
@@ -1280,15 +1318,13 @@
   .map-road__frame {
     position: relative;
     width: 100%;
-    min-height: min(440px, 82vw);
-    margin: 0 auto;
+    line-height: 0;
   }
   .map-road__svg {
     display: block;
     width: 100%;
+    max-width: 100%;
     height: auto;
-    min-height: 220px;
-    max-height: min(420px, 52vh);
     pointer-events: none;
   }
   .map-road__layer {
@@ -1647,8 +1683,7 @@
   }
   @media (max-width: 850px) {
     .shell { padding-top: max(12px, env(safe-area-inset-top, 0px)); }
-    .book-wrap { grid-template-columns: 42px minmax(0, 1fr); }
-    .spine, .book { min-height: 760px; }
+    .book-wrap { grid-template-columns: clamp(38px, 10vw, 48px) minmax(0, 1fr); }
     .spine-title { font-size: 1.1rem; }
     .page { padding: 22px 18px 70px; }
     .project-grid { grid-template-columns: 1fr; }
@@ -1657,13 +1692,6 @@
     .experience-grid { grid-template-columns: 1fr; }
     .interest-road.map-road {
       padding: 16px 10px 18px;
-    }
-    .map-road__frame {
-      min-height: 260px;
-    }
-    .map-road__svg {
-      min-height: 170px;
-      max-height: 300px;
     }
     .map-road__car {
       width: 38px;
@@ -1674,12 +1702,16 @@
     .photo-album { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 560px) {
+    :root {
+      --shell-header-gap: clamp(108px, 28vmin, 148px);
+      --book-fold-reserve: clamp(248px, 38vmin, 340px);
+    }
     .site-header {
       display: flex;
       flex-direction: column;
       align-items: stretch;
       gap: 10px 12px;
-      padding: max(6px, env(safe-area-inset-top, 0px)) clamp(12px, 4vw, 20px) 10px;
+      padding: max(6px, env(safe-area-inset-top, 0px)) clamp(12px, 4vw, 20px) clamp(14px, 3vh, 22px);
     }
     .site-logo {
       align-self: flex-start;
@@ -1700,8 +1732,8 @@
       font-size: .85rem;
     }
     .book-wrap { width: 100%; grid-template-columns: 28px minmax(0, 1fr); }
-    .spine, .book { min-height: 820px; }
-    h1 { font-size: 4.3rem; }
+    h1 { font-size: clamp(2.2rem, 7.5vw, 3.5rem); }
+    .page.cover h1 { font-size: clamp(1.85rem, 7vw, 2.75rem); }
     h2 { font-size: 2.55rem; }
     .project-grid { grid-template-columns: 1fr; }
     .polaroid { min-height: 174px; }
@@ -1714,7 +1746,7 @@
       margin-bottom: 16px;
     }
     .journal-nav {
-      padding: 10px 8px;
+      padding: clamp(14px, 2.5vh, 26px) 6px clamp(10px, 1.6vh, 14px);
       gap: 6px;
     }
     .journal-nav__btn {
@@ -2462,9 +2494,10 @@ window.addEventListener('scroll', () => {
   const root = document.querySelector('[data-interest-road]');
   const frame = document.getElementById('interestMapFrame');
   const layer = document.getElementById('interestMapLayer');
+  const svgEl = frame?.querySelector('.map-road__svg');
   const pathEl = document.getElementById('interestRoadPath');
   const car = document.getElementById('interestRoadCar');
-  if (!root || !frame || !layer || !pathEl || !car) return;
+  if (!root || !frame || !layer || !svgEl || !pathEl || !car) return;
 
   const VB = { w: 1000, h: 420 };
   let pathLen = 0;
@@ -2501,10 +2534,15 @@ window.addEventListener('scroll', () => {
     return Math.atan2(p2.y - p.y, p2.x - p.x) * (180 / Math.PI);
   }
 
+  function mapMetrics() {
+    const lw = svgEl.clientWidth;
+    const lh = svgEl.clientHeight;
+    return { lw, lh };
+  }
+
   function placeCar(t) {
     if (mqNarrow.matches) return;
-    const lw = layer.clientWidth;
-    const lh = layer.clientHeight;
+    const { lw, lh } = mapMetrics();
     if (!lw || !lh || !pathLen) return;
     const p = pointAt(t);
     const x = (p.x / VB.w) * lw;
@@ -2522,8 +2560,7 @@ window.addEventListener('scroll', () => {
       });
       return;
     }
-    const lw = layer.clientWidth;
-    const lh = layer.clientHeight;
+    const { lw, lh } = mapMetrics();
     if (!lw || !lh || !pathLen) return;
     stopEls().forEach(btn => {
       const ts = parseFloat(btn.dataset.stopT, 10);
@@ -2552,7 +2589,7 @@ window.addEventListener('scroll', () => {
 
   function onPointerMove(e) {
     if (!usePointer) return;
-    const r = frame.getBoundingClientRect();
+    const r = svgEl.getBoundingClientRect();
     if (r.width <= 0) return;
     const nx = (e.clientX - r.left) / r.width;
     targetT = Math.min(1, Math.max(0, nx));
@@ -2587,6 +2624,7 @@ window.addEventListener('scroll', () => {
 
   const ro = new ResizeObserver(() => layoutPins());
   ro.observe(frame);
+  ro.observe(svgEl);
 
   frame.addEventListener('pointermove', onPointerMove);
   frame.addEventListener('pointerleave', onPointerLeave);
