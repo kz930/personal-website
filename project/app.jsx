@@ -142,147 +142,20 @@ function Welcome() {
         </div>
       </div>
 
-      <div className={"scroll-cue" + (revealed ? " in" : "")}>scroll to dive in</div>
+      <button
+        type="button"
+        className={"scroll-cue" + (revealed ? " in" : "")}
+        onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}>
+        scroll to dive in
+      </button>
     </section>);
 
 }
 
-/* ---------- ISOMETRIC ROOM (compact SVG) ---------- */
+/* ---------- ISOMETRIC ROOM ---------- */
 function IsoRoom() {
   return (
-    <svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="isoFloor" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#f0d4ad" />
-          <stop offset="1" stopColor="#d8b487" />
-        </linearGradient>
-        <linearGradient id="isoWallL" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#fbe9d2" />
-          <stop offset="1" stopColor="#ecceae" />
-        </linearGradient>
-        <linearGradient id="isoWallR" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor="#edd8b8" />
-          <stop offset="1" stopColor="#d4ae88" />
-        </linearGradient>
-        <linearGradient id="isoBed" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#f0a888" />
-          <stop offset="1" stopColor="#d68868" />
-        </linearGradient>
-      </defs>
-
-      {/* drop shadow */}
-      <ellipse cx="200" cy="350" rx="155" ry="12" fill="rgba(107,74,82,0.13)" />
-
-      {/* ── FLOOR ── */}
-      <polygon points="200,340 368,248 200,156 32,248" fill="url(#isoFloor)" />
-      {/* subtle plank lines */}
-      <line x1="116" y1="294" x2="284" y2="202" stroke="rgba(107,74,82,0.08)" strokeWidth="1"/>
-      <line x1="155" y1="317" x2="323" y2="225" stroke="rgba(107,74,82,0.08)" strokeWidth="1"/>
-
-      {/* ── LEFT WALL ── */}
-      <polygon points="32,248 200,156 200,28 32,120" fill="url(#isoWallL)" />
-      {/* ── RIGHT WALL ── */}
-      <polygon points="200,156 368,248 368,120 200,28" fill="url(#isoWallR)" />
-      {/* ridge */}
-      <line x1="200" y1="28" x2="200" y2="156" stroke="rgba(107,74,82,0.20)" strokeWidth="1"/>
-
-      {/* ── WINDOW (left wall) ── */}
-      <polygon points="62,206 148,162 148,84 62,128" fill="#e8f0f0" />
-      {/* frame */}
-      <polygon points="62,206 148,162 148,158 62,202" fill="#a87850" />
-      <polygon points="62,126 148,82 148,86 62,130" fill="#a87850" />
-      <polygon points="62,126 66,124 66,202 62,204" fill="#a87850" />
-      <polygon points="144,84 148,82 148,160 144,162" fill="#a87850" />
-      {/* sky */}
-      <polygon points="66,200 144,158 144,88 66,130" fill="#cce4e8" />
-      {/* cross bars */}
-      <line x1="105" y1="88" x2="105" y2="200" stroke="#a87850" strokeWidth="0.8"/>
-      <line x1="66" y1="144" x2="144" y2="123" stroke="#a87850" strokeWidth="0.8"/>
-      {/* sun */}
-      <circle cx="122" cy="108" r="9" fill="#f5e0a8"/>
-      {/* hills */}
-      <path d="M66 180 Q88 162 120 170 Q140 163 144 172 L144 200 L66 200Z" fill="#b8ce98"/>
-      {/* curtains */}
-      <polygon points="46,218 68,206 68,82 46,94" fill="#fbd6b8" opacity="0.9"/>
-      <polygon points="132,172 154,160 154,36 132,48" fill="#fbd6b8" opacity="0.9"/>
-
-      {/* ── BOOKSHELF (right wall) ── */}
-      {/* shelf 1 */}
-      <polygon points="224,144 332,90 332,84 224,138" fill="#9a7048"/>
-      {/* books */}
-      <polygon points="234,132 244,127 244,109 234,114" fill="#b1979e"/>
-      <polygon points="245,127 255,122 255,104 245,109" fill="#e09878"/>
-      <polygon points="256,122 265,117 265,100 256,105" fill="#fcd6c1"/>
-      <polygon points="266,116 275,112 275,94 266,98" fill="#6b4a52"/>
-      <polygon points="276,111 288,106 288,88 276,93" fill="#dce0e9"/>
-      <polygon points="289,105 300,100 300,83 289,88" fill="#c8a878"/>
-      {/* shelf 2 */}
-      <polygon points="224,112 332,58 332,52 224,106" fill="#9a7048"/>
-      {/* small pot */}
-      <polygon points="242,100 254,94 254,84 242,90" fill="#c87858"/>
-      <path d="M248 88 Q242 72 252 74 Q258 62 266 74 Q272 70 270 84" fill="#8aa67a"/>
-      <ellipse cx="254" cy="86" rx="7" ry="1.8" fill="#9a7048"/>
-      {/* framed art */}
-      <polygon points="272,84 298,71 298,54 272,67" fill="#fff6e8"/>
-      <polygon points="275,81 295,70 295,57 275,68" fill="#f0d8c0"/>
-      <circle cx="285" cy="70" r="3" fill="#e09878"/>
-
-      {/* ── BED (right side of floor) ── */}
-      <polygon points="196,300 328,234 368,252 236,320" fill="#fbf3e8"/>
-      <polygon points="236,320 368,252 368,238 236,306" fill="#e4d4b8"/>
-      <polygon points="196,300 236,320 236,306 196,286" fill="#d0bca4"/>
-      {/* duvet */}
-      <polygon points="216,292 324,238 356,252 248,308" fill="url(#isoBed)"/>
-      <polygon points="248,308 356,252 356,240 248,294" fill="#b06848"/>
-      {/* pillow */}
-      <polygon points="302,248 346,226 354,230 310,253" fill="#f7ecdf"/>
-      <polygon points="310,253 354,230 354,237 310,260" fill="#ddd0be"/>
-      {/* headboard */}
-      <polygon points="328,234 368,214 368,170 328,190" fill="#a87850"/>
-      <polygon points="368,214 372,216 372,172 368,170" fill="#7a5238"/>
-
-      {/* ── DESK (left side of floor) ── */}
-      <polygon points="56,298 164,242 204,260 96,316" fill="#e4c09c"/>
-      <polygon points="56,298 96,316 96,325 56,307" fill="#ae8054"/>
-      <polygon points="96,316 204,260 204,269 96,325" fill="#c49668"/>
-      {/* legs */}
-      <line x1="64" y1="304" x2="64" y2="332" stroke="#886040" strokeWidth="2.5"/>
-      <line x1="194" y1="266" x2="194" y2="294" stroke="#886040" strokeWidth="2.5"/>
-
-      {/* laptop */}
-      <polygon points="98,280 152,253 170,260 116,288" fill="#3d2e25"/>
-      <polygon points="103,277 148,256 164,262 119,284" fill="#4e3d2e"/>
-      <polygon points="116,288 170,260 170,265 116,293" fill="#1f1812"/>
-      <polygon points="106,277 146,258 160,264 120,282" fill="#c8d8cc" opacity="0.75"/>
-
-      {/* matcha */}
-      <ellipse cx="158" cy="272" rx="7.5" ry="2.5" fill="#6b4a52"/>
-      <ellipse cx="158" cy="270.5" rx="6" ry="2" fill="#9ab07e"/>
-      {/* steam */}
-      <circle cx="157" cy="264" r="1.6" fill="rgba(255,255,255,0.65)">
-        <animate attributeName="cy" values="268;248;248" dur="2.2s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0;0.75;0" dur="2.2s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="162" cy="262" r="1.4" fill="rgba(255,255,255,0.65)">
-        <animate attributeName="cy" values="268;246;246" dur="2.2s" begin="0.7s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0;0.75;0" dur="2.2s" begin="0.7s" repeatCount="indefinite"/>
-      </circle>
-
-      {/* desk lamp */}
-      <line x1="76" y1="296" x2="76" y2="272" stroke="#6b4a52" strokeWidth="1.8"/>
-      <line x1="76" y1="272" x2="76" y2="256" stroke="#6b4a52" strokeWidth="1.8"/>
-      <line x1="76" y1="256" x2="90" y2="250" stroke="#6b4a52" strokeWidth="1.8"/>
-      <polygon points="80,252 100,244 104,236 84,244" fill="#fcd6c1"/>
-      <ellipse cx="92" cy="252" rx="9" ry="2" fill="#fff1cc" opacity="0.55"/>
-
-      {/* ── RUG ── */}
-      <polygon points="156,316 240,272 278,286 194,332" fill="#ecb8a6" opacity="0.80"/>
-      <polygon points="166,312 232,277 268,288 204,325" fill="none" stroke="#c87858" strokeWidth="0.9" strokeDasharray="3 2"/>
-
-      {/* ── FLOOR CUSHION ── */}
-      <polygon points="174,326 206,308 224,314 192,333" fill="#e09878"/>
-      <polygon points="174,326 192,333 192,339 174,332" fill="#b8704a"/>
-    </svg>
+    <img src="public/assets/bedroom.png?v=2" alt="isometric illustration of a small bedroom with desk, bed, plants, and a window" loading="lazy" />
   );
 }
 
@@ -300,12 +173,12 @@ function TopNav({ onLamp, mode }) {
       <a href="#welcome" className="logo">Kary Zheng</a>
       <nav className="nav-links">
         <a href="#about">about</a>
-        <a href="#projects">projects</a>
-        <a href="#extras">extras</a>
         <a href="#experience">experience</a>
+        <a href="#projects">projects</a>
         <a href="#publications">writing</a>
         <a href="#skills">skills</a>
-        <a href="#contact">say hi</a>
+        <a href="#extras">extras</a>
+        <a href="#contact">contact</a>
       </nav>
     </header>);
 
@@ -366,8 +239,7 @@ function About() {
         </div>
         <div className="room-card">
           <div className="label">
-            <span>fig. 01</span>
-            <span>my desk · 2026</span>
+            <span>cozy room</span>
           </div>
           <div className="room"><IsoRoom /></div>
           <div className="room-caption">a small room, mostly mine.</div>
@@ -379,102 +251,374 @@ function About() {
 
 /* ---------- PROJECTS ---------- */
 const PROJECTS = [
-  { num: "01", title: "Scalable Search Engine", desc: "Disk-based search engine over 50K+ web pages — crawler, inverted index, TF-IDF ranking, sub-300ms queries.", year: "2026", tags: ["Python", "IR", "TF-IDF"], href: null,
-    bullets: [
-      "Built a disk-based inverted index over 50,000+ ICS web pages, supporting partial indexing and on-disk merging to avoid memory blowups.",
-      "Implemented TF-IDF ranking with cosine similarity and tiered scoring (title / heading / body), tuned to push relevant results to the top.",
-      "Wrote a multi-threaded crawler with polite delays, robots.txt handling, and SimHash-based near-duplicate detection.",
-      "Achieved sub-300ms average query latency on 50K+ docs running locally on a laptop, with a small Flask query UI."
-    ]
+  {
+    num: "01",
+    title: "Scalable Search Engine",
+    year: "Jan 2026 — Mar 2026",
+    category: "SYSTEMS / INFORMATION RETRIEVAL",
+    summary: "Disk-based search engine over 50K+ web pages with crawling, inverted indexing, TF-IDF ranking, and sub-300ms query response.",
+    tags: ["Python", "Information Retrieval", "Data Structures"],
+    highlights: [
+      "Built a search engine that indexed 50K+ web pages, achieving sub-300ms query latency with optimized retrieval.",
+      "Engineered a crawler with domain filtering, trap avoidance, and politeness controls to improve crawl quality.",
+      "Designed a disk-based inverted index with partial indexing and k-way merging, reducing memory usage at scale.",
+      "Developed TF-IDF ranking with HTML tag weighting and term proximity, improving relevance for ranked results."
+    ],
+    href: null,
+    visual: "search"
   },
-  { num: "02", title: "Fabflix", desc: "Full-stack movie search & checkout with REST APIs, MySQL, Dockerized microservices on Kubernetes/AWS.", year: "2026", tags: ["Java", "MySQL", "K8s"], href: null,
-    bullets: [
-      "Designed a relational schema with foreign-key constraints across movies, stars, genres, and customers; loaded via custom XML parsers.",
-      "Built RESTful Java backend with prepared statements throughout — defended against SQL injection and XSS in security audit.",
-      "Containerized backend + MySQL with Docker Compose; deployed read/write-split microservices to a Kubernetes cluster on AWS EC2.",
-      "Integrated Stripe checkout and Google reCAPTCHA; load-tested with JMeter to validate scaling under 100+ concurrent shoppers."
-    ]
+  {
+    num: "02",
+    title: "Fabflix",
+    year: "Jan 2026 — Mar 2026",
+    category: "FULL-STACK / CLOUD",
+    summary: "Full-stack movie platform with search, authentication, checkout, and shopping cart — backed by Java Servlets, MySQL, and Dockerized services on Kubernetes/AWS.",
+    tags: ["Java", "MySQL", "REST APIs", "Docker", "Kubernetes", "AWS"],
+    highlights: [
+      "Built a full-stack movie platform with search, authentication, checkout, and shopping cart features.",
+      "Developed RESTful APIs using Java Servlets, Tomcat, and MySQL to support modular backend services.",
+      "Implemented secure login, session handling, and role-based employee access for customer and admin workflows.",
+      "Optimized MySQL queries and full-text search, reducing query response time by ~40%.",
+      "Deployed Dockerized microservices on Kubernetes and AWS, enabling load-balanced backend performance."
+    ],
+    href: null,
+    visual: "fabflix"
   },
-  { num: "03", title: "LifeLink", desc: "AI-powered CPR emergency response — voice agent + Arduino compression feedback over Web Serial.", year: "2026", tags: ["React", "ElevenLabs", "Arduino"], href: "https://www.lifelinkfor.us/",
-    bullets: [
-      "Won 1st place at HackUCI 2026 — built end-to-end in 36 hours with a 4-person team.",
-      "Designed a voice agent (ElevenLabs) that calmly guides bystanders through CPR with real-time audio coaching at the right BPM.",
-      "Connected an Arduino + force sensor to the browser via Web Serial API to measure compression depth/rate live.",
-      "Built a React UI that visualizes compression quality and dispatches an emergency call template with location + status."
-    ]
+  {
+    num: "03",
+    title: "LifeLink",
+    year: "Apr 2026",
+    category: "AI / HEALTHCARE / HARDWARE",
+    summary: "AI-powered CPR emergency response platform combining voice guidance, SOS coordination, and Arduino-based compression feedback over Web Serial.",
+    tags: ["React", "TypeScript", "Web Serial"],
+    highlights: [
+      "Built an AI CPR voice agent with ElevenLabs, delivering real-time CPR instructions through a React/TypeScript frontend.",
+      "Integrated Arduino sensor feedback via Web Serial, enabling live compression feedback in an end-to-end demo.",
+      "Connected SOS activation, AED routing, volunteer alerts, and patient handoff into a coordinated emergency workflow."
+    ],
+    href: "https://www.lifelinkfor.us/",
+    visual: "lifelink"
   },
-  { num: "04", title: "CARL — Cognitive Anteater Robotics Lab", desc: "Reinforcement learning simulations of episodic-like memory in cuttlefish behavior. Co-authored Scientific Reports paper.", year: "2024–", tags: ["Python", "Q-Learning", "Research"], href: "https://www.nature.com/articles/s41598-025-31950-x",
-    bullets: [
-      "Co-authored a Scientific Reports paper modeling episodic-like memory in cuttlefish foraging behavior.",
-      "Designed and ran Q-learning simulations across four delay/reward conditions; achieved stable convergence at delays up to 130s.",
-      "Wrote the simulation framework in Python (NumPy + custom env), produced figures and statistical analyses for the paper.",
-      "Presenting at UROP Symposium May 2026; ongoing extension work on memory consolidation under partial observability."
-    ]
-  },
-  { num: "05", title: "PhoenixConnect", desc: "Disaster-response app — wildfire data, shelter mapping, and community reports for emergency updates.", year: "2025", tags: ["Flask", "MongoDB", "NASA API"], href: null,
-    bullets: [
-      "Built during NASA Space Apps Challenge — emergency-response app for wildfire-affected communities.",
-      "Pulled live wildfire perimeters from NASA FIRMS API; rendered interactive maps with Leaflet + clustered shelter markers.",
-      "Backend in Flask + MongoDB stores user-submitted incident reports, photos, and shelter availability with moderation queue.",
-      "Designed an offline-friendly UI with cached map tiles for low-connectivity disaster zones."
-    ]
+  {
+    num: "04",
+    title: "PhoenixConnect",
+    year: "Jan 2025",
+    category: "CIVIC TECH / DISASTER RESPONSE",
+    summary: "Disaster-response web app for wildfire data, shelter mapping, and community reports to support emergency updates.",
+    tags: ["Flask", "MongoDB", "REST APIs"],
+    highlights: [
+      "Built a disaster response app using NASA and Google Maps APIs to map real-time wildfire data and shelters.",
+      "Developed Flask and MongoDB backend services for user reports, improving access to emergency updates."
+    ],
+    href: null,
+    visual: "phoenix"
   }
 ];
 
 const EXTRAS = [
-  { num: "a", title: "Edugen", desc: "AI lesson-generation platform — turns objectives into structured slides, narrated videos, and assessments.", year: "2025", tags: ["LLMs", "RAG", "EdTech"], href: null,
+  { num: "a", title: "Edugen", desc: "AI-powered lesson generation platform — turns objectives into structured slides and narrated instructional videos. Built for a startup competition.", year: "2025", tags: ["Python", "Full-Stack", "LLMs", "RAG", "SaaS Design"], href: null,
     bullets: [
-      "Designed a teacher-facing tool: enter a learning objective + grade level → out comes a full lesson kit (slides, narrated video, quiz).",
-      "Built a multi-stage LLM pipeline (outline → expand → narrate → assess) with RAG over uploaded textbooks for accuracy.",
-      "Generated narrated videos via TTS + slide-image compositing; assessment generator includes auto-grading rubrics.",
-      "Side build — explored what a teaching co-pilot could feel like if lesson prep took 5 minutes instead of 5 hours."
+      "Designed an AI-powered system that converts lesson objectives into structured slides and narrated instructional videos.",
+      "Built a retrieval-augmented generation (RAG) pipeline to fetch and rank curriculum-aligned educational content.",
+      "Developed content structuring pipeline (hook → concept → examples → assessment → recap) for consistent instructional output.",
+      "Implemented automated multimedia generation with editable outputs and citation support.",
+      "Conducted market research on K–12 education and homeschooling trends to validate product demand.",
+      "Proposed SaaS business model with freemium and institutional licensing strategy."
     ]
   },
-  { num: "b", title: "Lingualize", desc: "LLM writing assistant that refines language while tracking changes in emotional tone.", year: "2025", tags: ["Streamlit", "LLM", "Emotion"], href: null,
+  { num: "b", title: "Lingualize", desc: "LLM writing assistant that refines language while tracking changes in emotional tone.", year: "2024 — 25", tags: ["Python", "Streamlit", "LLMs", "Emotion Analysis"], href: null,
     bullets: [
-      "Streamlit app that rewrites text for clarity/concision while tracking the emotional tone shift in a side-by-side panel.",
-      "Combined an LLM rewriter with an emotion-classification API (joy / anger / sadness / fear) to score each draft.",
-      "Visualized tone deltas as horizontal bars so writers can see when an edit accidentally flattens or amplifies feeling.",
-      "Built for my own writing — kept catching myself sanding the emotion out of essays without realizing it."
+      "Built an LLM-powered application to refine language while tracking changes in emotional tone.",
+      "Designed pipeline integrating APIs for emotion analysis and text generation.",
+      "Developed Streamlit interface for real-time user interaction.",
+      "Evaluated how LLM outputs affect emotional tone using automated analysis."
     ]
   }
 ];
 
-function ProjectRow({ p }) {
-  const [open, setOpen] = useState(false);
-  const hasBullets = p.bullets && p.bullets.length > 0;
-  return (
-    <div className={"project-row" + (open ? " open" : "")}>
-      <button
-        type="button"
-        className="project-row-head"
-        onClick={() => hasBullets && setOpen((o) => !o)}
-        aria-expanded={open}>
+function ProjectVisual({ kind }) {
+  switch (kind) {
+    case "search":
+      return (
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="vg-search" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#fcd6c1" />
+              <stop offset="1" stopColor="#dce0e9" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="160" rx="8" fill="url(#vg-search)" />
+          <rect x="20" y="34" width="120" height="22" rx="11" fill="#fff8ee" stroke="#a87850" strokeWidth="0.8" />
+          <line x1="30" y1="46" x2="100" y2="46" stroke="#a89090" strokeWidth="0.8" />
+          <circle cx="138" cy="45" r="6" fill="none" stroke="#6b4a52" strokeWidth="1.6" />
+          <line x1="142" y1="49" x2="148" y2="55" stroke="#6b4a52" strokeWidth="1.6" strokeLinecap="round" />
+          <rect x="20" y="74" width="160" height="6" rx="3" fill="#fff8ee" opacity="0.85" />
+          <rect x="20" y="86" width="120" height="4" rx="2" fill="#fff8ee" opacity="0.7" />
+          <rect x="20" y="100" width="160" height="6" rx="3" fill="#fff8ee" opacity="0.85" />
+          <rect x="20" y="112" width="100" height="4" rx="2" fill="#fff8ee" opacity="0.7" />
+          <rect x="20" y="126" width="140" height="6" rx="3" fill="#fff8ee" opacity="0.85" />
+          <circle cx="14" cy="77" r="2" fill="#e09878" />
+          <circle cx="14" cy="103" r="2" fill="#e09878" />
+          <circle cx="14" cy="129" r="2" fill="#e09878" />
+        </svg>);
 
-        <span className="num">{p.num}</span>
-        <div className="project-main">
-          <h3>{p.title}</h3>
-          <span className="desc">{p.desc}</span>
-          <div className="project-tags">
-            {p.tags.map((t) => <span key={t}>{t}</span>)}
-          </div>
+    case "fabflix":
+      return (
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="vg-fab" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#dce0e9" />
+              <stop offset="1" stopColor="#b1979e" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="160" rx="8" fill="url(#vg-fab)" />
+          <rect x="18" y="22" width="40" height="60" rx="3" fill="#fff8ee" />
+          <rect x="64" y="22" width="40" height="60" rx="3" fill="#fff8ee" opacity="0.85" />
+          <rect x="110" y="22" width="40" height="60" rx="3" fill="#fff8ee" opacity="0.7" />
+          <rect x="156" y="22" width="32" height="60" rx="3" fill="#fff8ee" opacity="0.55" />
+          <g fill="#6b4a52" opacity="0.4">
+            <rect x="22" y="28" width="3" height="3" />
+            <rect x="22" y="36" width="3" height="3" />
+            <rect x="22" y="44" width="3" height="3" />
+            <rect x="22" y="52" width="3" height="3" />
+            <rect x="22" y="60" width="3" height="3" />
+            <rect x="22" y="68" width="3" height="3" />
+          </g>
+          <rect x="22" y="98" width="120" height="14" rx="7" fill="#fff8ee" />
+          <rect x="148" y="98" width="36" height="14" rx="7" fill="#e09878" />
+          <rect x="22" y="122" width="80" height="5" rx="2.5" fill="#fff8ee" opacity="0.7" />
+          <rect x="22" y="132" width="120" height="5" rx="2.5" fill="#fff8ee" opacity="0.5" />
+        </svg>);
+
+    case "lifelink":
+      return (
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="vg-life" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#fcd6c1" />
+              <stop offset="1" stopColor="#ecb8a6" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="160" rx="8" fill="url(#vg-life)" />
+          <path d="M100 38 Q92 28 84 32 Q74 38 84 50 L100 64 L116 50 Q126 38 116 32 Q108 28 100 38 Z" fill="#c34248" />
+          <polyline
+            points="20,90 50,90 60,70 70,108 80,60 90,90 130,90 140,78 150,90 180,90"
+            fill="none" stroke="#c34248" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+          <g stroke="#fff8ee" strokeWidth="2" strokeLinecap="round">
+            <line x1="42" y1="124" x2="42" y2="138" />
+            <line x1="50" y1="118" x2="50" y2="144" />
+            <line x1="58" y1="122" x2="58" y2="140" />
+            <line x1="66" y1="116" x2="66" y2="146" />
+            <line x1="74" y1="120" x2="74" y2="142" />
+            <line x1="82" y1="124" x2="82" y2="138" />
+          </g>
+          <rect x="118" y="116" width="64" height="28" rx="14" fill="#fff8ee" />
+          <text x="150" y="135" textAnchor="middle" fontSize="13" fontFamily="serif" fontStyle="italic" fill="#6b4a52">SOS</text>
+        </svg>);
+
+    case "carl":
+      return (
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="vg-carl" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#ced6d3" />
+              <stop offset="1" stopColor="#dce0e9" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="160" rx="8" fill="url(#vg-carl)" />
+          <line x1="20" y1="140" x2="180" y2="140" stroke="#a89090" strokeWidth="0.6" />
+          <line x1="20" y1="140" x2="20" y2="20" stroke="#a89090" strokeWidth="0.6" />
+          <path d="M20 140 Q60 130 100 100 Q140 80 180 60" fill="none" stroke="#e09878" strokeWidth="1.8" />
+          <g stroke="#6b4a52" strokeWidth="1" opacity="0.5">
+            <line x1="40" y1="50" x2="100" y2="80" />
+            <line x1="40" y1="110" x2="100" y2="80" />
+            <line x1="100" y1="80" x2="160" y2="50" />
+            <line x1="100" y1="80" x2="160" y2="110" />
+          </g>
+          <g fill="#6b4a52">
+            <circle cx="40" cy="50" r="6" />
+            <circle cx="40" cy="110" r="6" />
+            <circle cx="160" cy="50" r="6" />
+            <circle cx="160" cy="110" r="6" />
+          </g>
+          <circle cx="100" cy="80" r="11" fill="#fff8ee" stroke="#6b4a52" strokeWidth="1" />
+          <circle cx="100" cy="80" r="4" fill="#e09878" />
+        </svg>);
+
+    case "phoenix":
+      return (
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="vg-ph" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#ffead9" />
+              <stop offset="1" stopColor="#ffd9c6" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="160" rx="8" fill="url(#vg-ph)" />
+          <path d="M20 30 Q50 20 80 32 L110 28 L150 38 L180 30 L180 130 L150 128 L120 138 L80 132 L40 138 L20 130 Z" fill="#fff8ee" opacity="0.9" />
+          <path d="M30 60 Q80 70 140 50" fill="none" stroke="#a89090" strokeWidth="0.8" strokeDasharray="3 2" />
+          <path d="M40 100 Q90 90 160 110" fill="none" stroke="#a89090" strokeWidth="0.8" strokeDasharray="3 2" />
+          <path d="M80 50 Q86 40 92 50 Q90 60 86 64 Q82 60 80 50 Z" fill="#c34248" />
+          <circle cx="86" cy="58" r="2" fill="#f5e0a8" />
+          <path d="M138 88 L148 88 L143 76 Z" fill="#6b4a52" />
+          <rect x="138" y="86" width="10" height="6" fill="#6b4a52" />
+          <circle cx="170" cy="142" r="10" fill="#fff8ee" stroke="#6b4a52" strokeWidth="0.8" />
+          <line x1="170" y1="135" x2="170" y2="149" stroke="#c34248" strokeWidth="1.2" />
+        </svg>);
+
+    case "research":
+      return (
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="vg-research" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#ced6d3" />
+              <stop offset="1" stopColor="#dce0e9" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="160" rx="8" fill="url(#vg-research)" />
+          <line x1="20" y1="140" x2="180" y2="140" stroke="#a89090" strokeWidth="0.6" />
+          <line x1="20" y1="140" x2="20" y2="20" stroke="#a89090" strokeWidth="0.6" />
+          <path d="M20 140 Q60 130 100 100 Q140 80 180 60" fill="none" stroke="#e09878" strokeWidth="1.8" />
+          <g stroke="#6b4a52" strokeWidth="1" opacity="0.5">
+            <line x1="40" y1="50" x2="100" y2="80" />
+            <line x1="40" y1="110" x2="100" y2="80" />
+            <line x1="100" y1="80" x2="160" y2="50" />
+            <line x1="100" y1="80" x2="160" y2="110" />
+          </g>
+          <g fill="#6b4a52">
+            <circle cx="40" cy="50" r="6" />
+            <circle cx="40" cy="110" r="6" />
+            <circle cx="160" cy="50" r="6" />
+            <circle cx="160" cy="110" r="6" />
+          </g>
+          <circle cx="100" cy="80" r="11" fill="#fff8ee" stroke="#6b4a52" strokeWidth="1" />
+          <circle cx="100" cy="80" r="4" fill="#e09878" />
+        </svg>);
+
+    case "dashboard":
+      return (
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="vg-dash" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#ffead9" />
+              <stop offset="1" stopColor="#fcd6c1" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="160" rx="8" fill="url(#vg-dash)" />
+          <rect x="18" y="22" width="120" height="116" rx="4" fill="#fff8ee" />
+          <line x1="18" y1="38" x2="138" y2="38" stroke="#a89090" strokeWidth="0.5" />
+          <line x1="18" y1="56" x2="138" y2="56" stroke="#a89090" strokeWidth="0.5" />
+          <line x1="18" y1="74" x2="138" y2="74" stroke="#a89090" strokeWidth="0.5" />
+          <line x1="18" y1="92" x2="138" y2="92" stroke="#a89090" strokeWidth="0.5" />
+          <line x1="18" y1="110" x2="138" y2="110" stroke="#a89090" strokeWidth="0.5" />
+          <line x1="58" y1="22" x2="58" y2="138" stroke="#a89090" strokeWidth="0.5" />
+          <line x1="98" y1="22" x2="98" y2="138" stroke="#a89090" strokeWidth="0.5" />
+          <rect x="58" y="56" width="40" height="18" fill="#e09878" opacity="0.4" />
+          <path d="M148 80 L166 80 M163 76 L168 80 L163 84" stroke="#6b4a52" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <rect x="146" y="92" width="38" height="46" rx="3" fill="#fff8ee" />
+          <rect x="150" y="124" width="6" height="10" fill="#e09878" />
+          <rect x="158" y="118" width="6" height="16" fill="#e09878" />
+          <rect x="166" y="110" width="6" height="24" fill="#e09878" />
+          <rect x="174" y="104" width="6" height="30" fill="#e09878" />
+        </svg>);
+
+    case "teaching":
+      return (
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="vg-teach" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#ebe9e2" />
+              <stop offset="1" stopColor="#dce0e9" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="160" rx="8" fill="url(#vg-teach)" />
+          <rect x="18" y="22" width="164" height="88" rx="4" fill="#fff8ee" />
+          <rect x="18" y="22" width="164" height="14" rx="4" fill="#dce0e9" />
+          <rect x="18" y="32" width="164" height="4" fill="#dce0e9" />
+          <circle cx="26" cy="29" r="2" fill="#e09878" />
+          <circle cx="34" cy="29" r="2" fill="#f5e0a8" />
+          <circle cx="42" cy="29" r="2" fill="#b8ce98" />
+          <line x1="28" y1="48" x2="50" y2="48" stroke="#e09878" strokeWidth="1.5" />
+          <line x1="56" y1="48" x2="100" y2="48" stroke="#6b4a52" strokeWidth="1.5" />
+          <line x1="36" y1="60" x2="80" y2="60" stroke="#a89090" strokeWidth="1.5" />
+          <line x1="36" y1="70" x2="120" y2="70" stroke="#a89090" strokeWidth="1.5" />
+          <line x1="28" y1="82" x2="60" y2="82" stroke="#e09878" strokeWidth="1.5" />
+          <line x1="66" y1="82" x2="140" y2="82" stroke="#6b4a52" strokeWidth="1.5" />
+          <line x1="36" y1="94" x2="100" y2="94" stroke="#a89090" strokeWidth="1.5" />
+          <g fill="#6b4a52">
+            <circle cx="40" cy="130" r="5" />
+            <circle cx="60" cy="130" r="5" />
+            <circle cx="80" cy="130" r="5" />
+            <circle cx="100" cy="130" r="5" />
+            <circle cx="120" cy="130" r="5" />
+            <circle cx="140" cy="130" r="5" />
+            <circle cx="160" cy="130" r="5" />
+          </g>
+        </svg>);
+
+    case "publication":
+      return (
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="vg-pub" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#ced6d3" />
+              <stop offset="1" stopColor="#ebe9e2" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="160" rx="8" fill="url(#vg-pub)" />
+          <rect x="40" y="20" width="120" height="120" rx="3" fill="#fff8ee" />
+          <rect x="50" y="32" width="80" height="6" rx="1.5" fill="#6b4a52" />
+          <rect x="50" y="44" width="60" height="3" rx="1" fill="#a89090" />
+          <rect x="50" y="56" width="100" height="2" rx="1" fill="#a89090" />
+          <rect x="50" y="62" width="100" height="2" rx="1" fill="#a89090" />
+          <rect x="50" y="68" width="80" height="2" rx="1" fill="#a89090" />
+          <rect x="50" y="82" width="44" height="2" rx="1" fill="#a89090" />
+          <rect x="50" y="88" width="44" height="2" rx="1" fill="#a89090" />
+          <rect x="50" y="94" width="44" height="2" rx="1" fill="#a89090" />
+          <rect x="50" y="100" width="44" height="2" rx="1" fill="#a89090" />
+          <rect x="50" y="106" width="44" height="2" rx="1" fill="#a89090" />
+          <rect x="50" y="112" width="32" height="2" rx="1" fill="#a89090" />
+          <rect x="106" y="82" width="44" height="2" rx="1" fill="#a89090" />
+          <rect x="106" y="88" width="44" height="2" rx="1" fill="#a89090" />
+          <rect x="106" y="94" width="44" height="2" rx="1" fill="#a89090" />
+          <rect x="106" y="100" width="44" height="2" rx="1" fill="#a89090" />
+          <rect x="106" y="106" width="32" height="2" rx="1" fill="#a89090" />
+          <circle cx="148" cy="128" r="9" fill="#e09878" />
+          <text x="148" y="131" textAnchor="middle" fontSize="9" fontFamily="serif" fontStyle="italic" fill="#fff8ee">Sci</text>
+        </svg>);
+
+    default:
+      return null;
+  }
+}
+
+function ProjectCard({ p, featured }) {
+  return (
+    <article className={"project-card" + (featured ? " featured" : "")}>
+      <div className="project-card-text">
+        <div className="project-card-meta">
+          <span className="project-card-num">{p.num}</span>
+          <span className="project-card-cat">{p.category}</span>
+          <span className="project-card-year">{p.year}</span>
         </div>
-        <span className="year">{p.year}</span>
-        <span className="arrow">{open ? "−" : "+"}</span>
-      </button>
-      {open && hasBullets &&
-      <div className="project-detail">
-          <ul>
-            {p.bullets.map((b, i) => <li key={i}>{b}</li>)}
-          </ul>
-          {p.href &&
-        <a className="project-detail-link" href={p.href} target="_blank" rel="noreferrer">
-              visit project ↗
-            </a>
+        <h3>{p.title}</h3>
+        <p className="project-card-summary">{p.summary}</p>
+        <ul className="project-card-bullets">
+          {p.highlights.map((h, i) => <li key={i}>{h}</li>)}
+        </ul>
+        <div className="project-card-tags">
+          {p.tags.map((t) => <span key={t}>{t}</span>)}
+        </div>
+        {p.href &&
+          <a className="project-card-link" href={p.href} target="_blank" rel="noreferrer">
+            visit project ↗
+          </a>
         }
-        </div>
-      }
-    </div>);
+      </div>
+      <div className="project-card-visual">
+        <ProjectVisual kind={p.visual} />
+      </div>
+    </article>);
 
 }
 
@@ -486,43 +630,65 @@ function Projects() {
         <span className="meta">engineering · research · product builds</span>
       </div>
       <div className="project-list">
-        {PROJECTS.map((p) => <ProjectRow key={p.num} p={p} />)}
+        {PROJECTS.map((p, i) => <ProjectCard key={p.num} p={p} featured={i < 2} />)}
       </div>
     </section>);
 
 }
 
-/* ---------- EXTRAS (off-resume side projects) ---------- */
-function ExtraCard({ p }) {
-  const [open, setOpen] = useState(false);
-  const hasBullets = p.bullets && p.bullets.length > 0;
-  return (
-    <div className={"extra-card" + (open ? " open" : "")}>
-      <button
-        type="button"
-        className="extra-card-head-btn"
-        onClick={() => hasBullets && setOpen((o) => !o)}
-        aria-expanded={open}>
+/* ---------- EXTRAS (fun projects) ---------- */
+const FUN_COLORS = [
+  { from: "#d6e6ef", to: "#a8c8dc", ink: "#2c4a63" },  // light blue
+  { from: "#dee9c5", to: "#bcd098", ink: "#3d4a1f" },  // matcha
+  { from: "#dce0e9", to: "#bec5d4", ink: "#39425a" },  // lilac
+  { from: "#fde4b8", to: "#f5c87a", ink: "#6b4910" }   // honey
+];
 
-        <div className="extra-card-head">
-          <span className="extra-marker">·</span>
-          <span className="extra-year">{p.year}</span>
-        </div>
-        <h3>{p.title}</h3>
-        <p className="extra-desc">{p.desc}</p>
-        <div className="extra-tags">
-          {p.tags.map((t) => <span key={t}>{t}</span>)}
-        </div>
-        <span className="extra-toggle">{open ? "− less" : "+ more"}</span>
-      </button>
-      {open && hasBullets &&
-      <div className="extra-detail">
+function ExtraCard({ p, index }) {
+  const c = FUN_COLORS[index % FUN_COLORS.length];
+  const style = { "--fun-from": c.from, "--fun-to": c.to, "--fun-ink": c.ink };
+  const [open, setOpen] = useState(false);
+  const hasBullets = Array.isArray(p.bullets) && p.bullets.length > 0;
+
+  const toggle = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setOpen((o) => !o);
+  };
+
+  const inner =
+    <>
+      <div className="fun-card-head">
+        <span className="fun-num">{p.num}</span>
+        <span className="fun-year">{p.year}</span>
+      </div>
+      <h3>{p.title}</h3>
+      <p>{p.desc}</p>
+      <div className="fun-tags">
+        {p.tags.map((t) => <span key={t}>{t}</span>)}
+      </div>
+      {hasBullets &&
+        <button
+          type="button"
+          className="extra-toggle"
+          onClick={toggle}
+          aria-expanded={open}>
+          {open ? "hide details ↑" : "details ↓"}
+        </button>
+      }
+      {hasBullets && open &&
+        <div className="extra-detail">
           <ul>
             {p.bullets.map((b, i) => <li key={i}>{b}</li>)}
           </ul>
         </div>
       }
-    </div>);
+    </>;
+
+  return p.href ?
+  <a className="fun-card" href={p.href} target="_blank" rel="noreferrer" style={style}>{inner}</a> :
+
+  <div className="fun-card" style={style}>{inner}</div>;
 
 }
 
@@ -530,15 +696,15 @@ function Extras() {
   return (
     <section className="container extras-section" id="extras">
       <div className="section-head">
-        <h2><em>Side quests.</em></h2>
-        <span className="meta">fun projects · built for fun + curiosity</span>
+        <h2><em>Fun projects.</em></h2>
+        <span className="meta">built for fun + curiosity</span>
       </div>
       <p className="extras-intro">
         Smaller experiments and weekend builds — things I made because the idea wouldn't leave me alone.
         These don't make the official cut, but they're some of my favorites.
       </p>
       <div className="extras-grid">
-        {EXTRAS.map((p) => <ExtraCard key={p.num} p={p} />)}
+        {EXTRAS.map((p, i) => <ExtraCard key={p.num} p={p} index={i} />)}
       </div>
     </section>);
 
@@ -546,60 +712,80 @@ function Extras() {
 
 /* ---------- EXPERIENCE ---------- */
 const EXPERIENCE = [
-  { when: "Sep 2024 — now", role: "Research Assistant", where: "Cognitive Anteater Robotics Lab · UC Irvine", desc: "Q-learning simulations across four conditions, stable convergence under 130s delays. Co-authored Scientific Reports paper on episodic-like memory in cuttlefish.",
-    bullets: [
-      "Designed and ran reinforcement-learning simulations modeling episodic-like memory in cuttlefish foraging behavior.",
-      "Implemented Q-learning agents in Python (NumPy + custom env) across four delay/reward conditions with reproducible seeds.",
-      "Achieved stable convergence at delays up to 130 seconds, validating the model's biological plausibility.",
-      "Co-authored the resulting paper in Scientific Reports (2025); preparing follow-up work on memory consolidation."
-    ]
+  {
+    num: "01",
+    role: "Research Assistant",
+    where: "Cognitive Anteater Robotics Lab · UC Irvine",
+    when: "Sep 2024 — Present",
+    category: "RESEARCH / REINFORCEMENT LEARNING",
+    summary: "Reinforcement learning simulations modeling episodic-like memory in cuttlefish behavior. Co-authored Scientific Reports paper.",
+    tags: ["Python", "Machine Learning"],
+    highlights: [
+      "Designed Q-learning simulations across 4 experimental conditions, achieving stable convergence under 130-second delays.",
+      "Improved decision accuracy by ~20–30% through reward tuning, punishment modeling, and cross-environment evaluation.",
+      "Co-authored a peer-reviewed Scientific Reports publication on episodic-like memory in simulated cuttlefish behavior."
+    ],
+    href: "https://www.nature.com/articles/s41598-025-31950-x",
+    visual: "research"
   },
-  { when: "Sep 2024 — Sep 2025", role: "Software / Assessment Intern", where: "Mucci Assessment · Remote", desc: "Automated dashboards via Google Sheets API — cut manual reporting ~80%. Built reusable web modules to speed up client data access.",
-    bullets: [
-      "Built automated reporting pipelines using the Google Sheets API + Apps Script — reduced weekly manual work by ~80%.",
-      "Designed reusable web modules (HTML/CSS/JS) embedded in client dashboards for faster data lookup and filtering.",
-      "Migrated legacy client onboarding spreadsheets into a structured, multi-tenant template with validation rules.",
-      "Documented patterns + handoff guides so non-engineering staff could maintain and extend the tooling."
-    ]
+  {
+    num: "02",
+    role: "Intern",
+    where: "Mucci Assessment · Remote",
+    when: "Sep 2024 — Sep 2025",
+    category: "AUTOMATION / WEB",
+    summary: "Automated reporting dashboards via Google Sheets API — cut weekly manual work by ~80%. Built reusable web modules for client data access.",
+    tags: ["REST APIs", "HTML/CSS"],
+    highlights: [
+      "Automated dashboard updates via Google Sheets API, cutting manual reporting work by ~80% and saving ~5–10 hours/week.",
+      "Built reusable web modules for client projects, improving data access speed and reducing manual reporting steps."
+    ],
+    visual: "dashboard"
   },
-  { when: "Apr 2025 — Jun 2025", role: "Learning Assistant — Intro to Python", where: "UC Irvine", desc: "Led weekly Python labs for 30+ students. Guided debugging, program design, and core CS concepts in hands-on sessions.",
-    bullets: [
-      "Led weekly hands-on Python labs for 30+ first-year CS students; covered control flow, functions, lists/dicts, OOP basics.",
-      "Walked students through real debugging — reading tracebacks, isolating bugs, designing tests instead of guessing fixes.",
-      "Held office hours focused on the conceptual jumps (recursion, references vs. values) rather than just answers.",
-      "Wrote supplemental practice problems for students who finished early or wanted extra challenge."
-    ]
+  {
+    num: "03",
+    role: "Learning Assistant",
+    where: "UC Irvine",
+    when: "Apr 2025 — Jun 2025",
+    category: "TEACHING / CS EDUCATION",
+    summary: "Led weekly Python labs for 30+ first-year CS students. Guided debugging, program design, and core CS concepts in hands-on sessions.",
+    tags: ["Python"],
+    highlights: [
+      "Led weekly Python labs for 30+ students, improving assignment completion and reducing common debugging errors.",
+      "Guided students through Python debugging, program design, and core CS concepts during hands-on lab sessions."
+    ],
+    visual: "teaching"
   }
 ];
 
-function ExperienceRow({ e, num }) {
-  const [open, setOpen] = useState(false);
-  const hasBullets = e.bullets && e.bullets.length > 0;
+function ExperienceCard({ e, featured }) {
   return (
-    <div className={"exp-row" + (open ? " open" : "")}>
-      <button
-        type="button"
-        className="exp-row-head"
-        onClick={() => hasBullets && setOpen((o) => !o)}
-        aria-expanded={open}>
-
-        <span className="num">{num}</span>
-        <div className="exp-main">
-          <h3>{e.role}</h3>
-          <span className="exp-where">{e.where}</span>
-          <span className="exp-desc">{e.desc}</span>
+    <article className={"project-card" + (featured ? " featured" : "")}>
+      <div className="project-card-text">
+        <div className="project-card-meta">
+          <span className="project-card-num">{e.num}</span>
+          <span className="project-card-cat">{e.category}</span>
+          <span className="project-card-year">{e.when}</span>
         </div>
-        <span className="exp-when">{e.when}</span>
-        <span className="arrow">{open ? "−" : "+"}</span>
-      </button>
-      {open && hasBullets &&
-      <div className="exp-detail">
-          <ul>
-            {e.bullets.map((b, i) => <li key={i}>{b}</li>)}
-          </ul>
+        <h3>{e.role}</h3>
+        <div className="exp-where">{e.where}</div>
+        <p className="project-card-summary">{e.summary}</p>
+        <ul className="project-card-bullets">
+          {e.highlights.map((h, i) => <li key={i}>{h}</li>)}
+        </ul>
+        <div className="project-card-tags">
+          {e.tags.map((t) => <span key={t}>{t}</span>)}
         </div>
-      }
-    </div>);
+        {e.href &&
+          <a className="project-card-link" href={e.href} target="_blank" rel="noreferrer">
+            read paper ↗
+          </a>
+        }
+      </div>
+      <div className="project-card-visual">
+        <ProjectVisual kind={e.visual} />
+      </div>
+    </article>);
 
 }
 
@@ -610,8 +796,8 @@ function Experience() {
         <h2>Experience.</h2>
         <span className="meta">research · work · teaching</span>
       </div>
-      <div className="exp-list">
-        {EXPERIENCE.map((e, i) => <ExperienceRow key={i} e={e} num={String(i + 1).padStart(2, "0")} />)}
+      <div className="project-list">
+        {EXPERIENCE.map((e, i) => <ExperienceCard key={e.num} e={e} featured={i === 0} />)}
       </div>
     </section>);
 
@@ -623,30 +809,61 @@ const PUBLICATIONS = [
     num: "01",
     title: "Episodic-like memory in a simulation of cuttlefish behavior",
     venue: "Scientific Reports · 2025",
+    year: "2025",
+    category: "PEER-REVIEWED / NATURE",
     authors: "Kandimalla, S., Wong, Q. Y., Zheng, K. et al.",
-    href: "https://www.nature.com/articles/s41598-025-31950-x"
+    summary: "Computational model of episodic-like memory in cuttlefish foraging behavior, validating biological plausibility through Q-learning simulations.",
+    tags: ["Python", "Q-learning", "NumPy", "Cognitive Modeling"],
+    highlights: [
+      "Reinforcement-learning simulations across four delay/reward conditions, with stable convergence up to 130s delays.",
+      "Co-authored figures, statistical analyses, and the simulation framework in Python.",
+      "Published in Scientific Reports (Nature Portfolio), 2025."
+    ],
+    href: "https://www.nature.com/articles/s41598-025-31950-x",
+    visual: "publication"
   }
 ];
+
+function PublicationCard({ p, featured }) {
+  return (
+    <article className={"project-card" + (featured ? " featured" : "")}>
+      <div className="project-card-text">
+        <div className="project-card-meta">
+          <span className="project-card-num">{p.num}</span>
+          <span className="project-card-cat">{p.category}</span>
+          <span className="project-card-year">{p.year}</span>
+        </div>
+        <h3>{p.title}</h3>
+        <div className="pub-authors">{p.authors}</div>
+        <div className="pub-venue">{p.venue}</div>
+        <p className="project-card-summary">{p.summary}</p>
+        <ul className="project-card-bullets">
+          {p.highlights.map((h, i) => <li key={i}>{h}</li>)}
+        </ul>
+        <div className="project-card-tags">
+          {p.tags.map((t) => <span key={t}>{t}</span>)}
+        </div>
+        {p.href &&
+          <a className="project-card-link" href={p.href} target="_blank" rel="noreferrer">
+            read on Nature ↗
+          </a>
+        }
+      </div>
+      <div className="project-card-visual">
+        <ProjectVisual kind={p.visual} />
+      </div>
+    </article>);
+
+}
 
 function Publications() {
   return (
     <section className="container" id="publications">
       <div className="section-head">
-        <h2>Writing &amp; <em>publications.</em></h2>
-        <span className="meta">peer-reviewed · 2025</span>
+        <h2><em>Publications.</em></h2>
       </div>
-      <div className="pub-list">
-        {PUBLICATIONS.map((p) =>
-        <div className="pub-row" key={p.num}>
-            <span className="num">{p.num}</span>
-            <div>
-              <div className="pub-title">{p.title}</div>
-              <div className="pub-meta">{p.authors}</div>
-              <div className="pub-meta" style={{ fontStyle: "italic" }}>{p.venue}</div>
-            </div>
-            <a className="pub-link" href={p.href} target="_blank" rel="noreferrer">read on Nature ↗</a>
-          </div>
-        )}
+      <div className="project-list">
+        {PUBLICATIONS.map((p, i) => <PublicationCard key={p.num} p={p} featured={i === 0} />)}
       </div>
     </section>);
 
@@ -701,9 +918,9 @@ const LIKES = [
   { kind: "Listening", title: "k-pop playlists",   by: "on every walk",         img: "public/assets/kpop.png" },
   { kind: "Playing",   title: "ping pong",         by: "loudly, badly",         img: "public/assets/pingpong.png" },
   { kind: "Playing",   title: "badminton",         by: "weekend regulars",      img: "public/assets/badminton.png" },
-  { kind: "Reading",   title: "books",             by: "stacks by the bed",     img: "public/assets/books.png" },
-  { kind: "Building",  title: "side projects",     by: "keyboard hum",          img: "public/assets/laptop.png" },
-  { kind: "Studying",  title: "cuttlefish",        by: "my research muse",      img: "public/assets/cuttlefish.png" },
+  { kind: "Reading",   title: "books",             by: "stacks by the bed",     img: "public/assets/books.png?v=2" },
+  { kind: "Building",  title: "coding",             by: "keyboard hum",          img: "public/assets/laptop.png?v=2" },
+  { kind: "Studying",  title: "cuttlefish",        by: "my research muse",      img: "public/assets/cuttlefish.png?v=2" },
   { kind: "Doing",     title: "research",          by: "questions on questions", img: "public/assets/research.png" }
 ];
 
@@ -763,28 +980,33 @@ function Contact() {
 
 /* ---------- VINYL PLAYER ---------- */
 function Vinyl() {
-  const [playing, setPlaying] = useState(false);
-  const tracks = [
-  { t: "rainy windowsill", a: "m. atari" },
-  { t: "early light", a: "slow tapes" },
-  { t: "a quiet kitchen", a: "ko fujita" },
-  { t: "library hours", a: "north branch" }];
+  const [open, setOpen] = useState(false);
+  const track = { t: "Ditto", a: "NewJeans" };
 
-  const [idx, setIdx] = useState(0);
-  useEffect(() => {
-    if (!playing) return;
-    const id = setInterval(() => setIdx((i) => (i + 1) % tracks.length), 14000);
-    return () => clearInterval(id);
-    // eslint-disable-next-line
-  }, [playing]);
-  const cur = tracks[idx];
   return (
-    <div className={"vinyl" + (playing ? " playing" : "")} onClick={() => setPlaying((p) => !p)} title={playing ? "pause" : "play"}>
-      <div className="disk"></div>
-      <div className="vinyl-info">
-        <span className="now">{playing ? "now playing" : "lo-fi"}</span>
-        <span>{playing ? `${cur.t} — ${cur.a}` : "click to play"}</span>
+    <div className="vinyl-stack">
+      <div
+        className={"vinyl" + (open ? " playing" : "")}
+        onClick={() => setOpen((o) => !o)}
+        title={open ? "hide player" : "show player"}>
+        <div className="disk"></div>
+        <div className="vinyl-info">
+          <span className="now">{open ? "now showing" : "lo-fi"}</span>
+          <span>{open ? `${track.t} — ${track.a}` : "click to play"}</span>
+        </div>
       </div>
+      {open &&
+        <div className="vinyl-embed">
+          <iframe
+            src="https://archive.org/embed/newjeans-ditto-24bit-192khz"
+            width="500"
+            height="30"
+            frameBorder="0"
+            allowFullScreen
+            title="Ditto — NewJeans"
+          />
+        </div>
+      }
     </div>);
 
 }
@@ -796,11 +1018,6 @@ function Vinyl() {
 function App() {
   const [stage, setStage] = useState("landing"); // landing | exiting | world
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-  const mode = t.mode;
-
-  useEffect(() => {
-    document.documentElement.dataset.mode = mode;
-  }, [mode]);
 
   useEffect(() => {
     document.documentElement.style.setProperty("--word-gap", `${t.wordGap}em`);
@@ -810,14 +1027,10 @@ function App() {
     document.documentElement.style.setProperty("--terracotta", t.accentColor);
   }, [t.accentColor]);
 
-  const setMode = (m) => setTweak("mode", m);
-
   const handleEnter = () => {
     setStage("exiting");
     setTimeout(() => setStage("world"), 700);
   };
-
-  const togglMode = () => setMode(mode === "day" ? "night" : "day");
 
   return (
     <>
@@ -827,15 +1040,14 @@ function App() {
 
       {stage === "world" &&
       <>
-          <TopNav mode={mode} />
-          <LampCord mode={mode} onPull={togglMode} />
+          <TopNav />
           <Welcome />
           <About />
-          <Projects />
-          <Extras />
           <Experience />
+          <Projects />
           <Publications />
           <Skills />
+          <Extras />
           <Likes />
           <Contact />
           <footer className="footer">
@@ -853,12 +1065,6 @@ function App() {
               onChange={(v) => setTweak("wordGap", v)}
             />
             <TweakSection label="Theme" />
-            <TweakRadio
-              label="Mode"
-              value={t.mode}
-              options={["day", "night"]}
-              onChange={(v) => setTweak("mode", v)}
-            />
             <TweakColor
               label="Accent"
               value={t.accentColor}
