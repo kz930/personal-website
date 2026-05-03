@@ -150,145 +150,138 @@ function Welcome() {
 /* ---------- ISOMETRIC ROOM (compact SVG) ---------- */
 function IsoRoom() {
   return (
-    <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="isoFloor" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#f0d4ad" />
           <stop offset="1" stopColor="#d8b487" />
         </linearGradient>
-        <linearGradient id="wallL" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="isoWallL" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stopColor="#fbe9d2" />
           <stop offset="1" stopColor="#ecceae" />
         </linearGradient>
-        <linearGradient id="wallR" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#f5dab8" />
-          <stop offset="1" stopColor="#dab48c" />
+        <linearGradient id="isoWallR" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stopColor="#edd8b8" />
+          <stop offset="1" stopColor="#d4ae88" />
         </linearGradient>
-        <linearGradient id="bedTop" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="isoBed" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#f0a888" />
           <stop offset="1" stopColor="#d68868" />
         </linearGradient>
       </defs>
 
-      {/* base shadow */}
-      <ellipse cx="200" cy="332" rx="160" ry="14" fill="rgba(107,74,82,0.16)" />
+      {/* drop shadow */}
+      <ellipse cx="200" cy="350" rx="155" ry="12" fill="rgba(107,74,82,0.13)" />
 
-      {/* ====== ROOM SHELL (back-walls + floor) ====== */}
-      {/* floor diamond */}
-      <polygon points="200,320 360,240 200,160 40,240" fill="url(#floor)" />
-      {/* floor planks (thin lines) */}
-      <line x1="120" y1="280" x2="280" y2="200" stroke="rgba(107,74,82,0.10)" />
-      <line x1="160" y1="300" x2="320" y2="220" stroke="rgba(107,74,82,0.10)" />
-      <line x1="200" y1="320" x2="360" y2="240" stroke="rgba(107,74,82,0.10)" />
+      {/* ── FLOOR ── */}
+      <polygon points="200,340 368,248 200,156 32,248" fill="url(#isoFloor)" />
+      {/* subtle plank lines */}
+      <line x1="116" y1="294" x2="284" y2="202" stroke="rgba(107,74,82,0.08)" strokeWidth="1"/>
+      <line x1="155" y1="317" x2="323" y2="225" stroke="rgba(107,74,82,0.08)" strokeWidth="1"/>
 
-      {/* LEFT BACK WALL */}
-      <polygon points="40,240 200,160 200,40 40,120" fill="url(#wallL)" />
-      {/* RIGHT BACK WALL */}
-      <polygon points="200,160 360,240 360,120 200,40" fill="url(#wallR)" />
-      {/* wall edge highlight */}
-      <line x1="200" y1="40" x2="200" y2="160" stroke="rgba(107,74,82,0.18)" strokeWidth="0.8" />
+      {/* ── LEFT WALL ── */}
+      <polygon points="32,248 200,156 200,28 32,120" fill="url(#isoWallL)" />
+      {/* ── RIGHT WALL ── */}
+      <polygon points="200,156 368,248 368,120 200,28" fill="url(#isoWallR)" />
+      {/* ridge */}
+      <line x1="200" y1="28" x2="200" y2="156" stroke="rgba(107,74,82,0.20)" strokeWidth="1"/>
 
-      {/* ====== LEFT WALL: window with curtains ====== */}
-      {/* window frame */}
-      <polygon points="60,200 140,160 140,90 60,130" fill="#fff6e8" />
-      <polygon points="60,200 140,160 140,158 60,198" fill="#a87850" />
-      <polygon points="60,128 140,88 140,90 60,130" fill="#a87850" />
-      {/* sky inside window */}
-      <polygon points="63,196 137,159 137,93 63,131" fill="#dde8e8" />
-      <line x1="100" y1="113" x2="100" y2="178" stroke="#a87850" strokeWidth="0.8" />
-      <line x1="63,131" x2="137" y2="159" stroke="#a87850" strokeWidth="0.6" />
+      {/* ── WINDOW (left wall) ── */}
+      <polygon points="62,206 148,162 148,84 62,128" fill="#e8f0f0" />
+      {/* frame */}
+      <polygon points="62,206 148,162 148,158 62,202" fill="#a87850" />
+      <polygon points="62,126 148,82 148,86 62,130" fill="#a87850" />
+      <polygon points="62,126 66,124 66,202 62,204" fill="#a87850" />
+      <polygon points="144,84 148,82 148,160 144,162" fill="#a87850" />
+      {/* sky */}
+      <polygon points="66,200 144,158 144,88 66,130" fill="#cce4e8" />
+      {/* cross bars */}
+      <line x1="105" y1="88" x2="105" y2="200" stroke="#a87850" strokeWidth="0.8"/>
+      <line x1="66" y1="144" x2="144" y2="123" stroke="#a87850" strokeWidth="0.8"/>
       {/* sun */}
-      <circle cx="115" cy="120" r="8" fill="#f5e0a8" />
-      {/* hill */}
-      <path d="M 63 173 Q 90 158 137 167 L 137 196 L 63 196 Z" fill="#c8d4a8" />
-      {/* curtains (left + right) */}
-      <polygon points="48,210 70,200 70,90 48,100" fill="#fbd6b8" />
-      <polygon points="130,168 152,158 152,48 130,58" fill="#fbd6b8" />
-      <line x1="58" y1="200" x2="58" y2="98" stroke="#e09878" strokeWidth="1" />
-      <line x1="64" y1="195" x2="64" y2="93" stroke="#e09878" strokeWidth="1" />
-      <line x1="138" y1="164" x2="138" y2="56" stroke="#e09878" strokeWidth="1" />
-      <line x1="144" y1="160" x2="144" y2="50" stroke="#e09878" strokeWidth="1" />
+      <circle cx="122" cy="108" r="9" fill="#f5e0a8"/>
+      {/* hills */}
+      <path d="M66 180 Q88 162 120 170 Q140 163 144 172 L144 200 L66 200Z" fill="#b8ce98"/>
+      {/* curtains */}
+      <polygon points="46,218 68,206 68,82 46,94" fill="#fbd6b8" opacity="0.9"/>
+      <polygon points="132,172 154,160 154,36 132,48" fill="#fbd6b8" opacity="0.9"/>
 
-      {/* ====== RIGHT WALL: shelf with books ====== */}
-      <polygon points="220,140 320,90 320,84 220,134" fill="#a87850" />
-      {/* books on shelf */}
-      <polygon points="232,128 240,124 240,108 232,112" fill="#b1979e" />
-      <polygon points="241,124 250,119 250,102 241,107" fill="#e09878" />
-      <polygon points="251,119 260,114 260,96 251,101" fill="#fcd6c1" />
-      <polygon points="261,113 270,109 270,90 261,94" fill="#6b4a52" />
-      <polygon points="271,108 282,103 282,84 271,89" fill="#dce0e9" />
-      <polygon points="283,102 294,97 294,80 283,84" fill="#c8a878" />
-      {/* shelf 2 — small plant */}
-      <polygon points="220,108 320,58 320,52 220,102" fill="#a87850" />
-      <polygon points="240,98 252,92 252,82 240,88" fill="#c87858" />
-      <path d="M 246 86 Q 240 70 250 72 Q 256 60 264 72 Q 270 68 268 82" fill="#8aa67a" />
-      <ellipse cx="252" cy="84" rx="8" ry="2" fill="#a87850" />
+      {/* ── BOOKSHELF (right wall) ── */}
+      {/* shelf 1 */}
+      <polygon points="224,144 332,90 332,84 224,138" fill="#9a7048"/>
+      {/* books */}
+      <polygon points="234,132 244,127 244,109 234,114" fill="#b1979e"/>
+      <polygon points="245,127 255,122 255,104 245,109" fill="#e09878"/>
+      <polygon points="256,122 265,117 265,100 256,105" fill="#fcd6c1"/>
+      <polygon points="266,116 275,112 275,94 266,98" fill="#6b4a52"/>
+      <polygon points="276,111 288,106 288,88 276,93" fill="#dce0e9"/>
+      <polygon points="289,105 300,100 300,83 289,88" fill="#c8a878"/>
+      {/* shelf 2 */}
+      <polygon points="224,112 332,58 332,52 224,106" fill="#9a7048"/>
+      {/* small pot */}
+      <polygon points="242,100 254,94 254,84 242,90" fill="#c87858"/>
+      <path d="M248 88 Q242 72 252 74 Q258 62 266 74 Q272 70 270 84" fill="#8aa67a"/>
+      <ellipse cx="254" cy="86" rx="7" ry="1.8" fill="#9a7048"/>
+      {/* framed art */}
+      <polygon points="272,84 298,71 298,54 272,67" fill="#fff6e8"/>
+      <polygon points="275,81 295,70 295,57 275,68" fill="#f0d8c0"/>
+      <circle cx="285" cy="70" r="3" fill="#e09878"/>
 
-      {/* framed picture above shelf */}
-      <polygon points="270,80 295,67 295,52 270,65" fill="#fff6e8" />
-      <polygon points="273,77 292,68 292,55 273,64" fill="#ecceae" />
-      <circle cx="283" cy="68" r="3.5" fill="#e09878" />
-
-      {/* ====== BED on right side of floor ====== */}
-      {/* mattress base */}
-      <polygon points="200,290 320,230 360,247 240,310" fill="#fbf3e8" />
-      <polygon points="240,310 360,247 360,233 240,295" fill="#e8d8c0" />
-      <polygon points="200,290 240,310 240,295 200,275" fill="#d8c4a8" />
-      {/* duvet (peach) */}
-      <polygon points="220,283 320,232 350,244 250,298" fill="url(#bedTop)" />
-      <polygon points="250,298 350,244 350,232 250,283" fill="#b8704a" />
+      {/* ── BED (right side of floor) ── */}
+      <polygon points="196,300 328,234 368,252 236,320" fill="#fbf3e8"/>
+      <polygon points="236,320 368,252 368,238 236,306" fill="#e4d4b8"/>
+      <polygon points="196,300 236,320 236,306 196,286" fill="#d0bca4"/>
+      {/* duvet */}
+      <polygon points="216,292 324,238 356,252 248,308" fill="url(#isoBed)"/>
+      <polygon points="248,308 356,252 356,240 248,294" fill="#b06848"/>
       {/* pillow */}
-      <polygon points="298,242 340,222 348,225 306,247" fill="#f7ecdf" />
-      <polygon points="306,247 348,225 348,231 306,253" fill="#e0d4c4" />
-      <polygon points="298,242 306,247 306,253 298,247" fill="#c8b89a" />
+      <polygon points="302,248 346,226 354,230 310,253" fill="#f7ecdf"/>
+      <polygon points="310,253 354,230 354,237 310,260" fill="#ddd0be"/>
       {/* headboard */}
-      <polygon points="320,230 360,210 360,170 320,190" fill="#a87850" />
-      <polygon points="360,210 360,170 364,172 364,212" fill="#7a5238" />
+      <polygon points="328,234 368,214 368,170 328,190" fill="#a87850"/>
+      <polygon points="368,214 372,216 372,172 368,170" fill="#7a5238"/>
 
-      {/* ====== DESK on left side of floor ====== */}
-      {/* desk top */}
-      <polygon points="60,290 160,238 200,255 100,308" fill="#e8c4a0" />
-      <polygon points="60,290 100,308 100,316 60,298" fill="#b08458" />
-      <polygon points="100,308 200,255 200,263 100,316" fill="#c89a72" />
-      {/* desk legs */}
-      <line x1="68" y1="295" x2="68" y2="320" stroke="#8a6448" strokeWidth="2" />
-      <line x1="190" y1="260" x2="190" y2="285" stroke="#8a6448" strokeWidth="2" />
+      {/* ── DESK (left side of floor) ── */}
+      <polygon points="56,298 164,242 204,260 96,316" fill="#e4c09c"/>
+      <polygon points="56,298 96,316 96,325 56,307" fill="#ae8054"/>
+      <polygon points="96,316 204,260 204,269 96,325" fill="#c49668"/>
+      {/* legs */}
+      <line x1="64" y1="304" x2="64" y2="332" stroke="#886040" strokeWidth="2.5"/>
+      <line x1="194" y1="266" x2="194" y2="294" stroke="#886040" strokeWidth="2.5"/>
 
-      {/* laptop on desk */}
-      <polygon points="100,275 150,250 168,257 118,283" fill="#3d2e25" />
-      <polygon points="105,272 145,253 162,260 122,279" fill="#5d4a3a" />
-      <polygon points="118,283 168,257 168,261 118,287" fill="#1f1812" />
-      {/* screen glow */}
-      <polygon points="108,272 144,254 158,260 122,278" fill="#dce8d8" opacity="0.7" />
+      {/* laptop */}
+      <polygon points="98,280 152,253 170,260 116,288" fill="#3d2e25"/>
+      <polygon points="103,277 148,256 164,262 119,284" fill="#4e3d2e"/>
+      <polygon points="116,288 170,260 170,265 116,293" fill="#1f1812"/>
+      <polygon points="106,277 146,258 160,264 120,282" fill="#c8d8cc" opacity="0.75"/>
 
-      {/* matcha cup */}
-      <ellipse cx="155" cy="265" rx="8" ry="3" fill="#6b4a52" />
-      <ellipse cx="155" cy="263.5" rx="6.5" ry="2.2" fill="#a8b890" />
+      {/* matcha */}
+      <ellipse cx="158" cy="272" rx="7.5" ry="2.5" fill="#6b4a52"/>
+      <ellipse cx="158" cy="270.5" rx="6" ry="2" fill="#9ab07e"/>
       {/* steam */}
-      <g>
-        <circle cx="155" cy="258" r="1.8" fill="rgba(255,255,255,0.7)">
-          <animate attributeName="cy" from="262" to="240" dur="2.4s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0;0.8;0" dur="2.4s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="160" cy="256" r="1.6" fill="rgba(255,255,255,0.7)">
-          <animate attributeName="cy" from="262" to="237" dur="2.4s" begin="0.8s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0;0.8;0" dur="2.4s" begin="0.8s" repeatCount="indefinite" />
-        </circle>
-      </g>
+      <circle cx="157" cy="264" r="1.6" fill="rgba(255,255,255,0.65)">
+        <animate attributeName="cy" values="268;248;248" dur="2.2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.75;0" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="162" cy="262" r="1.4" fill="rgba(255,255,255,0.65)">
+        <animate attributeName="cy" values="268;246;246" dur="2.2s" begin="0.7s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.75;0" dur="2.2s" begin="0.7s" repeatCount="indefinite"/>
+      </circle>
 
       {/* desk lamp */}
-      <line x1="80" y1="288" x2="80" y2="265" stroke="#6b4a52" strokeWidth="1.5" />
-      <path d="M 80 265 L 80 250 Q 80 244 86 244" fill="none" stroke="#6b4a52" strokeWidth="1.5" />
-      <polygon points="76,247 96,247 100,238 80,238" fill="#fcd6c1" />
-      <ellipse cx="88" cy="247" rx="10" ry="2" fill="#fff1cc" opacity="0.6" />
+      <line x1="76" y1="296" x2="76" y2="272" stroke="#6b4a52" strokeWidth="1.8"/>
+      <line x1="76" y1="272" x2="76" y2="256" stroke="#6b4a52" strokeWidth="1.8"/>
+      <line x1="76" y1="256" x2="90" y2="250" stroke="#6b4a52" strokeWidth="1.8"/>
+      <polygon points="80,252 100,244 104,236 84,244" fill="#fcd6c1"/>
+      <ellipse cx="92" cy="252" rx="9" ry="2" fill="#fff1cc" opacity="0.55"/>
 
-      {/* ====== RUG (between desk and bed) ====== */}
-      <polygon points="160,306 240,266 280,280 200,322" fill="#ecb8a6" opacity="0.85" />
-      <polygon points="170,302 230,272 270,283 210,316" fill="none" stroke="#c87858" strokeWidth="0.8" strokeDasharray="3 2" />
+      {/* ── RUG ── */}
+      <polygon points="156,316 240,272 278,286 194,332" fill="#ecb8a6" opacity="0.80"/>
+      <polygon points="166,312 232,277 268,288 204,325" fill="none" stroke="#c87858" strokeWidth="0.9" strokeDasharray="3 2"/>
 
-      {/* ====== floor cushion ====== */}
-      <polygon points="180,316 210,300 226,306 196,323" fill="#e09878" />
-      <polygon points="180,316 196,323 196,328 180,322" fill="#b8704a" />
+      {/* ── FLOOR CUSHION ── */}
+      <polygon points="174,326 206,308 224,314 192,333" fill="#e09878"/>
+      <polygon points="174,326 192,333 192,339 174,332" fill="#b8704a"/>
     </svg>
   );
 }
@@ -341,9 +334,11 @@ function About() {
       <div className="about-grid">
         <div>
           <h2>About<br /><em>Kary.</em></h2>
-          <p className="about-facts">
-            UC Irvine <span aria-hidden="true">·</span> B.S. Computer Science <span aria-hidden="true">·</span> B.A. Psychological Science <span aria-hidden="true">·</span> ICS Honors <span aria-hidden="true">·</span> GPA 3.95
-          </p>
+          <div className="about-facts">
+            {["UC Irvine", "B.S. Computer Science", "B.A. Psychological Science", "ICS Honors", "GPA 3.95"].map((f) => (
+              <span key={f} className="about-tag">{f}</span>
+            ))}
+          </div>
         </div>
         <div className="about-body">
           <p>
@@ -488,7 +483,7 @@ function Projects() {
     <section className="container" id="projects">
       <div className="section-head">
         <h2>Projects.</h2>
-        <span className="meta">engineering · research · product builds — click to expand</span>
+        <span className="meta">engineering · research · product builds</span>
       </div>
       <div className="project-list">
         {PROJECTS.map((p) => <ProjectRow key={p.num} p={p} />)}
@@ -536,7 +531,7 @@ function Extras() {
     <section className="container extras-section" id="extras">
       <div className="section-head">
         <h2><em>Side quests.</em></h2>
-        <span className="meta">extras · not on the résumé · built for fun + curiosity</span>
+        <span className="meta">fun projects · built for fun + curiosity</span>
       </div>
       <p className="extras-intro">
         Smaller experiments and weekend builds — things I made because the idea wouldn't leave me alone.
@@ -577,7 +572,7 @@ const EXPERIENCE = [
   }
 ];
 
-function ExperienceRow({ e }) {
+function ExperienceRow({ e, num }) {
   const [open, setOpen] = useState(false);
   const hasBullets = e.bullets && e.bullets.length > 0;
   return (
@@ -588,13 +583,14 @@ function ExperienceRow({ e }) {
         onClick={() => hasBullets && setOpen((o) => !o)}
         aria-expanded={open}>
 
-        <span className="when">{e.when}</span>
-        <div className="what">
+        <span className="num">{num}</span>
+        <div className="exp-main">
           <h3>{e.role}</h3>
-          <span className="where">{e.where}</span>
+          <span className="exp-where">{e.where}</span>
+          <span className="exp-desc">{e.desc}</span>
         </div>
-        <p className="desc">{e.desc}</p>
-        <span className="exp-toggle">{open ? "−" : "+"}</span>
+        <span className="exp-when">{e.when}</span>
+        <span className="arrow">{open ? "−" : "+"}</span>
       </button>
       {open && hasBullets &&
       <div className="exp-detail">
@@ -612,10 +608,10 @@ function Experience() {
     <section className="container" id="experience">
       <div className="section-head">
         <h2>Experience.</h2>
-        <span className="meta">a partial timeline — click to expand</span>
+        <span className="meta">research · work · teaching</span>
       </div>
       <div className="exp-list">
-        {EXPERIENCE.map((e, i) => <ExperienceRow key={i} e={e} />)}
+        {EXPERIENCE.map((e, i) => <ExperienceRow key={i} e={e} num={String(i + 1).padStart(2, "0")} />)}
       </div>
     </section>);
 
@@ -679,7 +675,7 @@ function Skills() {
     <section className="container" id="skills">
       <div className="section-head">
         <h2>Skills.</h2>
-        <span className="meta">a working list, not a flex</span>
+        <span className="meta"></span>
       </div>
       <div className="skills-grid">
         {SKILLS.map((g) =>
