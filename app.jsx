@@ -242,7 +242,7 @@ function About() {
             <span>cozy room</span>
           </div>
           <div className="room"><IsoRoom /></div>
-          <div className="room-caption">a small room, mostly mine.</div>
+          <div className="room-caption">a quiet corner of my own.</div>
         </div>
       </div>
     </section>);
