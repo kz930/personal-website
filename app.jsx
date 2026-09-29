@@ -106,7 +106,7 @@ function Landing({ onEnter, exiting }) {
 /* ---------- WELCOME (animated splash) ---------- */
 function Welcome() {
   const marquee = [
-  "software engineer", "uc irvine", "cs + psych",
+  "software engineer", "open source @ apache texera", "uc irvine", "cs + psych",
   "ai / ml research", "full-stack builder", "matcha enthusiast",
   "k-pop on every walk", "matcha tastings"];
 
@@ -259,7 +259,7 @@ const PROJECTS = [
     summary: "Disk-based search engine over 50K+ web pages with crawling, inverted indexing, TF-IDF ranking, and sub-300ms query response.",
     tags: ["Python", "Information Retrieval", "Data Structures"],
     highlights: [
-      "Built a search engine that indexed 50K+ web pages, achieving sub-300ms query latency with optimized retrieval.",
+      "Built a search engine that indexed 50K+ web pages via a custom web crawler, achieving sub-300ms query latency with optimized retrieval.",
       "Engineered a crawler with domain filtering, trap avoidance, and politeness controls to improve crawl quality.",
       "Designed a disk-based inverted index with partial indexing and k-way merging, reducing memory usage at scale.",
       "Developed TF-IDF ranking with HTML tag weighting and term proximity, improving relevance for ranked results."
@@ -310,7 +310,7 @@ const PROJECTS = [
       "Built a disaster response app using NASA and Google Maps APIs to map real-time wildfire data and shelters.",
       "Developed Flask and MongoDB backend services for user reports, improving access to emergency updates."
     ],
-    href: null,
+    href: "https://devpost.com/software/phoenixconnect",
     visual: "phoenix"
   }
 ];
@@ -326,17 +326,29 @@ const EXTRAS = [
       "Proposed SaaS business model with freemium and institutional licensing strategy."
     ]
   },
-  { num: "b", title: "Lingualize", desc: "LLM writing assistant that refines language while tracking changes in emotional tone.", year: "2024 — 25", tags: ["Python", "Streamlit", "LLMs", "Emotion Analysis"], href: null,
+  { num: "b", title: "Lingualize", desc: "LLM writing assistant that refines language while tracking changes in emotional tone.", year: "Sep 2024 — Sep 2025", tags: ["Python", "Streamlit", "LLMs", "Emotion Analysis"], href: null,
     bullets: [
       "Built an LLM-powered application to refine language while tracking changes in emotional tone.",
       "Designed pipeline integrating APIs for emotion analysis and text generation.",
       "Developed Streamlit interface for real-time user interaction.",
       "Evaluated how LLM outputs affect emotional tone using automated analysis."
     ]
+  },
+  { num: "c", title: "Rising Stars!", desc: "UX/UI designer for the game's interface — a playable demo is up on itch.io.", year: "Jan — Jun 2025", tags: ["Game Design", "UX/UI"], href: "https://vvilder.itch.io/rising-stars-demo",
+    bullets: [
+      "Designed the user experience and interface for the game, from menus to in-game HUD."
+    ]
+  },
+  { num: "d", title: "Starlight Supermarket", desc: "A supermarket-management game where I led the overall design direction — gameplay, economy, and progression.", year: "Apr 2025", tags: ["Game Design", "Systems Design", "Economy Balancing"], href: null,
+    bullets: [
+      "Led the overall game design direction, including core gameplay mechanics, economic systems, and player progression.",
+      "Owned macro-level planning (economy balance, content pacing, unlock systems) and micro-level design (product pricing, customer behavior, inventory mechanics).",
+      "Delivered detailed design documentation and blueprints to guide both artists and programmers throughout development."
+    ]
   }
 ];
 
-function ProjectVisual({ kind }) {
+function ProjectVisual({ kind, badge }) {
   switch (kind) {
     case "search":
       return (
@@ -414,6 +426,54 @@ function ProjectVisual({ kind }) {
           </g>
           <rect x="118" y="116" width="64" height="28" rx="14" fill="#fff8ee" />
           <text x="150" y="135" textAnchor="middle" fontSize="13" fontFamily="serif" fontStyle="italic" fill="#6b4a52">SOS</text>
+        </svg>);
+
+    case "pipeline":
+      return (
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="vg-pipe" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#dce0e9" />
+              <stop offset="1" stopColor="#fcd6c1" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="160" rx="8" fill="url(#vg-pipe)" />
+          <g stroke="#6b4a52" strokeWidth="1.2" fill="none" opacity="0.6">
+            <path d="M52 50 L80 50" />
+            <path d="M52 50 Q66 50 66 80 L80 80" />
+            <path d="M112 50 Q126 50 126 65 L140 65" />
+            <path d="M112 80 Q126 80 126 65 L140 65" />
+          </g>
+          <rect x="20" y="40" width="32" height="20" rx="4" fill="#fff8ee" stroke="#a87850" strokeWidth="0.8" />
+          <rect x="80" y="40" width="32" height="20" rx="4" fill="#fff8ee" stroke="#a87850" strokeWidth="0.8" />
+          <rect x="80" y="70" width="32" height="20" rx="4" fill="#fff8ee" stroke="#a87850" strokeWidth="0.8" />
+          <rect x="140" y="55" width="40" height="20" rx="4" fill="#e09878" />
+          <rect x="20" y="108" width="160" height="34" rx="4" fill="#2f2a2c" opacity="0.85" />
+          <text x="30" y="122" fontSize="8" fontFamily="monospace" fill="#b8ce98">def op_148(df):</text>
+          <text x="30" y="134" fontSize="8" fontFamily="monospace" fill="#f5e0a8">  ✓ ci passed · 4× faster</text>
+        </svg>);
+
+    case "wellness":
+      return (
+        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="vg-well" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#dee9c5" />
+              <stop offset="1" stopColor="#ebe9e2" />
+            </linearGradient>
+          </defs>
+          <rect width="200" height="160" rx="8" fill="url(#vg-well)" />
+          <rect x="30" y="26" width="90" height="108" rx="3" fill="#fff8ee" />
+          <rect x="40" y="36" width="56" height="6" rx="1.5" fill="#6b4a52" />
+          <rect x="40" y="50" width="70" height="2" rx="1" fill="#a89090" />
+          <rect x="40" y="56" width="70" height="2" rx="1" fill="#a89090" />
+          <rect x="40" y="62" width="50" height="2" rx="1" fill="#a89090" />
+          <rect x="40" y="74" width="70" height="30" rx="2" fill="#dee9c5" />
+          <rect x="40" y="112" width="60" height="2" rx="1" fill="#a89090" />
+          <rect x="40" y="118" width="44" height="2" rx="1" fill="#a89090" />
+          <path d="M150 70 Q142 60 134 64 Q124 70 134 82 L150 96 L166 82 Q176 70 166 64 Q158 60 150 70 Z" fill="#e09878" />
+          <path d="M140 118 Q150 104 160 118" fill="none" stroke="#6b8a4a" strokeWidth="2" strokeLinecap="round" />
+          <line x1="150" y1="112" x2="150" y2="134" stroke="#6b8a4a" strokeWidth="2" strokeLinecap="round" />
         </svg>);
 
     case "carl":
@@ -583,8 +643,8 @@ function ProjectVisual({ kind }) {
           <rect x="106" y="94" width="44" height="2" rx="1" fill="#a89090" />
           <rect x="106" y="100" width="44" height="2" rx="1" fill="#a89090" />
           <rect x="106" y="106" width="32" height="2" rx="1" fill="#a89090" />
-          <circle cx="148" cy="128" r="9" fill="#e09878" />
-          <text x="148" y="131" textAnchor="middle" fontSize="9" fontFamily="serif" fontStyle="italic" fill="#fff8ee">Sci</text>
+          <circle cx="148" cy="128" r={badge && badge.length > 3 ? 12 : 9} fill="#e09878" />
+          <text x="148" y="131" textAnchor="middle" fontSize="9" fontFamily="serif" fontStyle="italic" fill="#fff8ee">{badge || "Sci"}</text>
         </svg>);
 
     default:
@@ -714,47 +774,80 @@ function Extras() {
 const EXPERIENCE = [
   {
     num: "01",
+    role: "Open-Source Software Engineering Intern",
+    where: "Apache Texera · UC Irvine",
+    when: "May 2026 — Present",
+    category: "OPEN SOURCE / DATA SYSTEMS",
+    summary: "Python standalone-code generation for 148 Texera workflow operators, plus a CI verification framework that checks generated code against the native engine.",
+    tags: ["Python", "Scala", "GitHub Actions", "CI/CD"],
+    highlights: [
+      "Implemented Python standalone-code generation for 148 Texera workflow operators, enabling execution independent of the native Scala/JVM engine.",
+      "Designed an integration-based verification framework comparing native Texera execution against generated Python outputs in GitHub CI.",
+      "Optimized workflow verification with persistent worker pools, batching, and parallel execution, reducing runtime from 32.8s to 8.0s (~4×) in a benchmark of the first 53 implemented operators.",
+      "Collaborate closely with Prof. Chen Li and other contributors on system design, technical handoffs, GitHub issues, pull requests, and production-quality open-source code."
+    ],
+    href: "https://github.com/apache/texera",
+    linkLabel: "view on GitHub ↗",
+    visual: "pipeline"
+  },
+  {
+    num: "02",
     role: "Research Assistant",
     where: "Cognitive Anteater Robotics Lab · UC Irvine",
-    when: "Sep 2024 — Present",
+    when: "Sep 2024 — Jun 2026",
     category: "RESEARCH / REINFORCEMENT LEARNING",
-    summary: "Reinforcement learning simulations modeling episodic-like memory in cuttlefish behavior. Co-authored Scientific Reports paper.",
+    summary: "Reinforcement learning simulations modeling episodic-like memory and delayed gratification in cuttlefish behavior. Co-authored two peer-reviewed papers.",
     tags: ["Python", "Machine Learning"],
     highlights: [
       "Designed Q-learning simulations across 4 experimental conditions, achieving stable convergence under 130-second delays.",
       "Improved decision accuracy by ~20–30% through reward tuning, punishment modeling, and cross-environment evaluation.",
-      "Co-authored a peer-reviewed Scientific Reports publication on episodic-like memory in simulated cuttlefish behavior."
+      "Co-authored two peer-reviewed publications on episodic-like memory and delayed gratification in simulated cuttlefish behavior."
     ],
-    href: "https://www.nature.com/articles/s41598-025-31950-x",
+    href: "#publications",
+    linkLabel: "see publications ↓",
     visual: "research"
   },
   {
-    num: "02",
+    num: "03",
     role: "Intern",
     where: "Mucci Assessment · Remote",
     when: "Sep 2024 — Sep 2025",
     category: "AUTOMATION / WEB",
-    summary: "Automated reporting dashboards via Google Sheets API — cut weekly manual work by ~80%. Built reusable web modules for client data access.",
-    tags: ["REST APIs", "HTML/CSS"],
+    summary: "Industry-sponsored consulting internship led by Prof. James A. Mucci — automated website content with the Google Sheets API and built reusable web modules for clients.",
+    tags: ["REST APIs", "JavaScript", "HTML/CSS"],
     highlights: [
-      "Automated dashboard updates via Google Sheets API, cutting manual reporting work by ~80% and saving ~5–10 hours/week.",
-      "Built reusable web modules for client projects, improving data access speed and reducing manual reporting steps."
+      "Integrated Google Sheets API to automatically sync website content, replacing manual content updates.",
+      "Built reusable web modules for client projects, reducing duplicate development across similar website features."
     ],
     visual: "dashboard"
   },
   {
-    num: "03",
+    num: "04",
     role: "Learning Assistant",
-    where: "UC Irvine",
+    where: "ICS 32 · UC Irvine",
     when: "Apr 2025 — Jun 2025",
     category: "TEACHING / CS EDUCATION",
     summary: "Led weekly Python labs for 30+ first-year CS students. Guided debugging, program design, and core CS concepts in hands-on sessions.",
     tags: ["Python"],
     highlights: [
-      "Led weekly Python labs for 30+ students, improving assignment completion and reducing common debugging errors.",
-      "Guided students through Python debugging, program design, and core CS concepts during hands-on lab sessions."
+      "Led weekly Python labs for 30+ students, reinforcing Python programming and core CS concepts.",
+      "Guided students through debugging, program design, and problem-solving during hands-on lab sessions."
     ],
     visual: "teaching"
+  },
+  {
+    num: "05",
+    role: "Volunteer · Field Study",
+    where: "WISE PAC · UC Irvine School of Social Ecology",
+    when: "Oct 2024",
+    category: "COMMUNITY / MENTAL HEALTH",
+    summary: "Student organization advocating mental-health awareness and supporting students who feel stressed or depressed.",
+    tags: ["Writing", "Event Planning"],
+    highlights: [
+      "Wrote the weekly newsletter promoting mental-health awareness and campus resources.",
+      "Organized events throughout the quarter to support students dealing with stress."
+    ],
+    visual: "wellness"
   }
 ];
 
@@ -777,8 +870,8 @@ function ExperienceCard({ e, featured }) {
           {e.tags.map((t) => <span key={t}>{t}</span>)}
         </div>
         {e.href &&
-          <a className="project-card-link" href={e.href} target="_blank" rel="noreferrer">
-            read paper ↗
+          <a className="project-card-link" href={e.href} {...(e.href.startsWith("#") ? {} : { target: "_blank", rel: "noreferrer" })}>
+            {e.linkLabel || "learn more ↗"}
           </a>
         }
       </div>
@@ -794,7 +887,7 @@ function Experience() {
     <section className="container" id="experience">
       <div className="section-head">
         <h2>Experience.</h2>
-        <span className="meta">research · work · teaching</span>
+        <span className="meta">open source · research · work · teaching</span>
       </div>
       <div className="project-list">
         {EXPERIENCE.map((e, i) => <ExperienceCard key={e.num} e={e} featured={i === 0} />)}
@@ -820,7 +913,26 @@ const PUBLICATIONS = [
       "Published in Scientific Reports (Nature Portfolio), 2025."
     ],
     href: "https://www.nature.com/articles/s41598-025-31950-x",
-    visual: "publication"
+    linkLabel: "read on Nature ↗",
+    visual: "publication",
+    badge: "Sci"
+  },
+  {
+    num: "02",
+    title: "Delayed Gratification in a Robotic Model of Cuttlefish Behavior",
+    venue: "Lecture Notes in Artificial Intelligence · Springer Nature · 2026",
+    year: "2026",
+    category: "PEER-REVIEWED / SPRINGER",
+    authors: "Wong, Q. Y., Zheng, K. et al.",
+    summary: "Robotic and simulated model of how cuttlefish trade immediate rewards for better delayed ones, extending our reinforcement-learning framework to self-control behavior.",
+    tags: ["Python", "Reinforcement Learning", "Robotics", "Cognitive Modeling"],
+    highlights: [
+      "Modeled delayed-gratification behavior with reward tuning and punishment modeling across experimental conditions.",
+      "Published in Lecture Notes in Artificial Intelligence (Springer Nature), 2026."
+    ],
+    href: null,
+    visual: "publication",
+    badge: "LNAI"
   }
 ];
 
@@ -845,12 +957,12 @@ function PublicationCard({ p, featured }) {
         </div>
         {p.href &&
           <a className="project-card-link" href={p.href} target="_blank" rel="noreferrer">
-            read on Nature ↗
+            {p.linkLabel || "read paper ↗"}
           </a>
         }
       </div>
       <div className="project-card-visual">
-        <ProjectVisual kind={p.visual} />
+        <ProjectVisual kind={p.visual} badge={p.badge} />
       </div>
     </article>);
 
@@ -872,15 +984,17 @@ function Publications() {
 /* ---------- SKILLS ---------- */
 const SKILLS = [
   { group: "Languages", items: [
-    { name: "Python" }, { name: "Java" }, { name: "C++" }
+    { name: "Python" }, { name: "Java" }, { name: "Scala" }, { name: "C++" },
+    { name: "JavaScript" }, { name: "TypeScript" }, { name: "SQL" }
   ]},
   { group: "Frameworks & Tools", items: [
-    { name: "React" }, { name: "TypeScript" }, { name: "Flask" },
-    { name: "MongoDB" }, { name: "MySQL" }, { name: "Docker" },
-    { name: "Kubernetes" }, { name: "AWS" }, { name: "HTML" }, { name: "CSS" }
+    { name: "React" }, { name: "Flask" }, { name: "Pandas" }, { name: "Java Servlets" },
+    { name: "PostgreSQL" }, { name: "MySQL" }, { name: "MongoDB" }, { name: "Docker" },
+    { name: "Kubernetes" }, { name: "AWS" }, { name: "Git" }, { name: "GitHub Actions" },
+    { name: "HTML" }, { name: "CSS" }
   ]},
   { group: "Topics", items: [
-    { name: "Data Structures" }, { name: "REST APIs" },
+    { name: "Data Structures & Algorithms" }, { name: "REST APIs" }, { name: "CI/CD" },
     { name: "Information Retrieval" }, { name: "Machine Learning" },
     { name: "Reinforcement Learning" }, { name: "Data Mining" },
     { name: "Web Serial" }
